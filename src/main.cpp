@@ -1,5 +1,6 @@
 #include "main.h"
-#include "MinimalOgre.h"
+#include "BaseApplication.h"
+#include "Terrain.h"
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -17,7 +18,7 @@ extern "C" {
 #endif
     {
         // Create application object
-        MinimalOgre app;
+        TutorialApplication app;
  
         try {
             app.go();

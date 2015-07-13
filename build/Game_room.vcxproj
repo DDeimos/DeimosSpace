@@ -58,7 +58,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\engine\lib\Debug\OgreMain_d.lib;..\engine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\engine\lib\Debug\OgreOverlay_d.lib;..\engine\lib\Debug\OIS_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\engine\lib\Debug\OgreMain_d.lib;..\engine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\engine\lib\Debug\OgreOverlay_d.lib;..\engine\lib\Debug\OIS_d.lib;..\engine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,11 +80,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\MinimalOgre.cpp" />
+    <ClCompile Include="..\src\BaseApplication.cpp" />
+    <ClCompile Include="..\src\Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\main.h" />
-    <ClInclude Include="..\src\MinimalOgre.h" />
+    <ClInclude Include="..\src\BaseApplication.h" />
+    <ClInclude Include="..\src\Terrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
