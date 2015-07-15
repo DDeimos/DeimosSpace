@@ -70,22 +70,64 @@ void TutorialApplication::createScene()
 	}
 
 	mTerrainGroup->freeTemporaryResources();	
+
+	//SkyPlanes and  fog
+	Ogre::ColourValue fadeColour(0.9, 0.9, 0.9);
+	mSceneMgr->setFog(Ogre::FOG_LINEAR, fadeColour, 0.0, 10, 1200);
+	mWindow->getViewport(0)->setBackgroundColour(fadeColour);
+  
+	Ogre::Plane plane;
+	plane.d = 10;
+	plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
+  
+	mSceneMgr->setSkyPlane(true, plane, "Examples/CloudySky", 500, 2, true, 0.5, 150, 150);
 }
  
 void TutorialApplication::createFrameListener()
 {
   BaseApplication::createFrameListener();
+
+  //Terrain Create Label
+  mInfoLabel = mTrayMgr->createLabel(OgreBites::TL_TOP, "TInfo", "", 350);
 }
  
 void TutorialApplication::destroyScene()
 {
+	//Cleaning Up
+	OGRE_DELETE mTerrainGroup;
+    OGRE_DELETE mTerrainGlobals;
 }
  
 bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
-  bool ret = BaseApplication::frameRenderingQueued(fe);
+	bool ret = BaseApplication::frameRenderingQueued(fe);
  
-  return ret;
+	//Terrain Loading Label
+    if (mTerrainGroup->isDerivedDataUpdateInProgress())
+    {
+        mTrayMgr->moveWidgetToTray(mInfoLabel, OgreBites::TL_TOP, 0);
+        mInfoLabel->show();
+        if (mTerrainsImported)
+        {
+            mInfoLabel->setCaption("Building terrain, please wait...");
+        }
+        else
+        {
+            mInfoLabel->setCaption("Updating textures, patience...");
+        }
+    }
+    else
+    {
+        mTrayMgr->removeWidgetFromTray(mInfoLabel);
+        mInfoLabel->hide();
+        if (mTerrainsImported)
+        {
+            mTerrainGroup->saveAllTerrains(true);
+            mTerrainsImported = false;
+        }
+    }
+  
+    return ret;
 }
  
 void getTerrainImage(bool flipX, bool flipY, Ogre::Image& img)
