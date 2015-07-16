@@ -45,6 +45,11 @@ void TutorialApplication::createScene()
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
+	Ogre::Entity* tudorEntity = mSceneMgr->createEntity("tudorhouse.mesh");
+	Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Node");
+	node->attachObject(tudorEntity);
+	node->setPosition(Ogre::Vector3(1683, 550, 1316));
+
 	Ogre::Light* light = mSceneMgr->createLight("TestLight");
 	light->setType(Ogre::Light::LT_DIRECTIONAL);
 	light->setDirection(lightdir);
