@@ -1,72 +1,39 @@
-#include "Terrain.h"
+#include "TerrainSample.h"
 
-TutorialApplication::TutorialApplication()
+TerrainSample::TerrainSample()
 	: mTerrainGroup(0),
 	mTerrainGlobals(0),
 	mInfoLabel(0)
 {
 }
 
-TutorialApplication::~TutorialApplication()
+TerrainSample::~TerrainSample()
 {
 }
 
-void TutorialApplication::createScene()
+void TerrainSample::createScene()
 {
-	//SkyPlanes and  fog
+	// Fog
 	Ogre::ColourValue fadeColour(0.6, 0.6, 0.6);
 	mSceneMgr->setFog(Ogre::FOG_EXP, fadeColour, 0.002);
 	mWindow->getViewport(0)->setBackgroundColour(fadeColour);
 
-	Ogre::Plane plane;
-	plane.d = 100;
-	plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
+	BaseApplication::createScene();
 
-	mSceneMgr->setSkyPlane(true, plane, "Examples/CloudySky", 500, 20, true, 0.5, 150, 150);
-
-	//Setting Up the Camera
-	mCamera->setPosition(Ogre::Vector3(1683, 50, 2116));
-	mCamera->lookAt(Ogre::Vector3(1963, 50, 1660));
-	mCamera->setNearClipDistance(0.1);
-
-	bool infiniteClip =
-		mRoot->getRenderSystem()->getCapabilities()->hasCapability(
-		Ogre::RSC_INFINITE_FAR_PLANE);
-
-	if (infiniteClip)
-		mCamera->setFarClipDistance(0);
-	else
-		mCamera->setFarClipDistance(50000);
-
-
-	//Setting Up a Light for Our Terrain
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
-
-	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
-	lightdir.normalise();
-
+	// House
 	Ogre::Entity* tudorEntity = mSceneMgr->createEntity("tudorhouse.mesh");
 	Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Node");
 	node->attachObject(tudorEntity);
 	node->setPosition(Ogre::Vector3(1683, 550, 1316));
 
-	Ogre::Light* light = mSceneMgr->createLight("TestLight");
-	light->setType(Ogre::Light::LT_DIRECTIONAL);
-	light->setDirection(lightdir);
-	light->setDiffuseColour(Ogre::ColourValue::White);
-	light->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
-
 	//Configuring the Terrain
 	mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
 
-	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(
-		mSceneMgr, 
-		Ogre::Terrain::ALIGN_X_Z, 
-		513, 12000.0);
+	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(mSceneMgr, Ogre::Terrain::ALIGN_X_Z, 513, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));
 	mTerrainGroup->setOrigin(Ogre::Vector3::ZERO);
 
-	configureTerrainDefaults(light);
+	configureTerrainDefaults(mLight);
 
 	for (long x = 0; x <= 0; ++x)
 		for (long y = 0; y <= 0; ++y)
@@ -86,11 +53,9 @@ void TutorialApplication::createScene()
 	}
 
 	mTerrainGroup->freeTemporaryResources();	
-
-
 }
 
-void TutorialApplication::createFrameListener()
+void TerrainSample::createFrameListener()
 {
 	BaseApplication::createFrameListener();
 
@@ -98,14 +63,14 @@ void TutorialApplication::createFrameListener()
 	mInfoLabel = mTrayMgr->createLabel(OgreBites::TL_TOP, "TInfo", "", 350);
 }
 
-void TutorialApplication::destroyScene()
+void TerrainSample::destroyScene()
 {
 	//Cleaning Up
 	OGRE_DELETE mTerrainGroup;
 	OGRE_DELETE mTerrainGlobals;
 }
 
-bool TutorialApplication::frameRenderingQueued(const Ogre::FrameEvent& fe)
+bool TerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
 	bool ret = BaseApplication::frameRenderingQueued(fe);
 
@@ -148,7 +113,7 @@ void getTerrainImage(bool flipX, bool flipY, Ogre::Image& img)
 		img.flipAroundX();
 }
 
-void TutorialApplication::defineTerrain(long x, long y)
+void TerrainSample::defineTerrain(long x, long y)
 {
 	//Writing defineTerrain
 	Ogre::String filename = mTerrainGroup->generateFilename(x, y);
@@ -166,7 +131,7 @@ void TutorialApplication::defineTerrain(long x, long y)
 	}
 }
 
-void TutorialApplication::initBlendMaps(Ogre::Terrain* terrain)
+void TerrainSample::initBlendMaps(Ogre::Terrain* terrain)
 {
 	//Writing initBlendMaps
 	Ogre::Real minHeight0 = 70;
@@ -204,7 +169,7 @@ void TutorialApplication::initBlendMaps(Ogre::Terrain* terrain)
 	blendMap1->update();
 }
 
-void TutorialApplication::configureTerrainDefaults(Ogre::Light* light)
+void TerrainSample::configureTerrainDefaults(Ogre::Light* light)
 {
 	//Writing configureTerrainDefaults
 	mTerrainGlobals->setMaxPixelError(8);
