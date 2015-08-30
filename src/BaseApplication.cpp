@@ -10,8 +10,8 @@ BaseApplication::BaseApplication(void)
 	mCamera(0),
 	mSceneMgr(0),
 	mWindow(0),
-	mResourcesCfg(Ogre::StringUtil::BLANK),
-	mPluginsCfg(Ogre::StringUtil::BLANK),
+	mResourcesCfg(Ogre::BLANKSTRING),
+	mPluginsCfg(Ogre::BLANKSTRING),
 	mTrayMgr(0),
 	mCameraMan(0),
 	mDetailsPanel(0),
@@ -404,22 +404,22 @@ bool BaseApplication::keyReleased( const OIS::KeyEvent &arg )
 
 bool BaseApplication::mouseMoved( const OIS::MouseEvent &arg )
 {
-	if (mTrayMgr->injectMouseMove(arg)) return true;
-	mCameraMan->injectMouseMove(arg);
+	if (mTrayMgr->injectPointerMove(arg)) return true;
+	mCameraMan->injectPointerMove(arg);
 	return true;
 }
 
 bool BaseApplication::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-	if (mTrayMgr->injectMouseDown(arg, id)) return true;
-	mCameraMan->injectMouseDown(arg, id);
+	if (mTrayMgr->injectPointerDown(arg, id)) return true;
+	mCameraMan->injectPointerDown(arg, id);
 	return true;
 }
 
 bool BaseApplication::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-	if (mTrayMgr->injectMouseUp(arg, id)) return true;
-	mCameraMan->injectMouseUp(arg, id);
+	if (mTrayMgr->injectPointerUp(arg, id)) return true;
+	mCameraMan->injectPointerUp(arg, id);
 	return true;
 }
 

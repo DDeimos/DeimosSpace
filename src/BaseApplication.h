@@ -10,6 +10,10 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 
+#include "OgreWindowEventUtilities.h"
+#include "OgreTextureManager.h"
+#include "OgreMaterialManager.h"
+
 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
 #  include <OIS/OISEvents.h>
 #  include <OIS/OISInputManager.h>
