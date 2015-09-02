@@ -27,7 +27,7 @@ void TerrainSample::createScene()
 	node->setPosition(Ogre::Vector3(1683, 550, 1316));
 
 	//Configuring the Terrain
-	/*mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
+	mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
 
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(mSceneMgr, Ogre::Terrain::ALIGN_X_Z, 513, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));
@@ -52,7 +52,7 @@ void TerrainSample::createScene()
 		}
 	}
 
-	mTerrainGroup->freeTemporaryResources();*/	
+	mTerrainGroup->freeTemporaryResources();	
 }
 
 void TerrainSample::createFrameListener()
@@ -75,7 +75,7 @@ bool TerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 	bool ret = BaseApplication::frameRenderingQueued(fe);
 
 	//Terrain Loading Label
-	/*if (mTerrainGroup->isDerivedDataUpdateInProgress())
+	if (mTerrainGroup->isDerivedDataUpdateInProgress())
 	{
 		mTrayMgr->moveWidgetToTray(mInfoLabel, OgreBites::TL_TOP, 0);
 		mInfoLabel->show();
@@ -97,7 +97,7 @@ bool TerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 			mTerrainGroup->saveAllTerrains(true);
 			mTerrainsImported = false;
 		}
-	}*/
+	}
 
 	return ret;
 }

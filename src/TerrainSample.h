@@ -1,5 +1,5 @@
-#include <OgreTerrain.h>
-#include <OgreTerrainGroup.h>
+#include <Terrain/OgreTerrain.h>
+#include <Terrain/OgreTerrainGroup.h>
 
 #include "BaseApplication.h"
 
