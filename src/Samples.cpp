@@ -23,8 +23,9 @@ void CSamples::Load()
 
 void CSamples::InitSamples()
 {
-	m_samples.insert(pair<Ogre::String, BaseApplication*>("TerrainSample", new TerrainSample()));
-	m_samples.insert(pair<Ogre::String, BaseApplication*>("PhysicsSample", new PhysicsSample()));
+	m_samples["TerrainSample"] = new TerrainSample();
+	m_samples["PhysicsSample"] = new PhysicsSample();
+	m_samples["TutorialSampleCLS"] = new TutorialSampleCLS();
 }
 
 void CSamples::LoadStartSample()

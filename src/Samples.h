@@ -1,7 +1,8 @@
+#include <windows.h>
 #include "BaseApplication.h"
 #include "TerrainSample.h"
 #include "PhysicsSample.h"
-#include "windows.h"
+#include "TutorialSampleCLS.h"
 
 using namespace std;
 

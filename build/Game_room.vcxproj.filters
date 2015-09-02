@@ -30,6 +30,9 @@
     <ClCompile Include="..\src\PhysicsSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\TutorialSampleCLS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\main.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PhysicsSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TutorialSampleCLS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
