@@ -9,6 +9,7 @@ public:
 protected:
 	virtual void createScene();
 	virtual void createCamera();
+	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
 	void InitAmbientLight();
 	void CreateSpotLight();
@@ -16,4 +17,8 @@ protected:
 	void CreateDirectionalLight();
 	void CreateGround();
 	void CreateNinja();
+
+private:
+	Ogre::Light* directionalLight;
+	Ogre::Real m_dirLightAxis;
 };
