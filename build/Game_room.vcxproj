@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\InputBufferSample.cpp" />
     <ClCompile Include="..\src\InputSample.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\BaseApplication.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="..\src\TutorialSampleCLS.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\InputBufferSample.h" />
     <ClInclude Include="..\src\InputSample.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\BaseApplication.h" />

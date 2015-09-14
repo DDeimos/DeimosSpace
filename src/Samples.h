@@ -4,6 +4,7 @@
 #include "PhysicsSample.h"
 #include "TutorialSampleCLS.h"
 #include "InputSample.h"
+#include "InputBufferSample.h"
 
 using namespace std;
 
