@@ -25,7 +25,7 @@ void CSamples::InitSamples()
 {
 	m_samples["TerrainSample"] = new TerrainSample();
 	m_samples["PhysicsSample"] = new PhysicsSample();
-	m_samples["TutorialSampleCLS"] = new TutorialSampleCLS();
+	m_samples["LightSample"] = new LightSample();
 	m_samples["InputSample"] = new InputSample();
 	m_samples["InputBufferSample"] = new InputBufferSample();
 }

@@ -2,7 +2,7 @@
 #include "BaseApplication.h"
 #include "TerrainSample.h"
 #include "PhysicsSample.h"
-#include "TutorialSampleCLS.h"
+#include "LightSample.h"
 #include "InputSample.h"
 #include "InputBufferSample.h"
 

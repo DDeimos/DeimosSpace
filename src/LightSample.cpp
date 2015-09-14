@@ -1,16 +1,16 @@
-#include "TutorialSampleCLS.h"
+#include "LightSample.h"
 
-TutorialSampleCLS::TutorialSampleCLS()
+LightSample::LightSample()
 {
 	m_dirLightAxis = 0;
 }
 
-TutorialSampleCLS::~TutorialSampleCLS()
+LightSample::~LightSample()
 {
 
 }
 
-void TutorialSampleCLS::createCamera()
+void LightSample::createCamera()
 {
 	BaseApplication::createCamera();
 
@@ -18,7 +18,7 @@ void TutorialSampleCLS::createCamera()
 	mCamera->lookAt(Ogre::Vector3(0, 0, 0));
 }
 
-void TutorialSampleCLS::createScene()
+void LightSample::createScene()
 {
 	//BaseApplication::createScene();
 
@@ -32,23 +32,23 @@ void TutorialSampleCLS::createScene()
 	CreateNinja();
 }
 
-bool TutorialSampleCLS::frameRenderingQueued(const Ogre::FrameEvent& evt)
+bool LightSample::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
-	BaseApplication::frameRenderingQueued(evt);
+	bool ret = BaseApplication::frameRenderingQueued(evt);
 
 	directionalLight->setDirection(Ogre::Vector3(0, Ogre::Math::Cos(m_dirLightAxis), Ogre::Math::Sin(m_dirLightAxis)));
-	m_dirLightAxis = m_dirLightAxis < Ogre::Math::TWO_PI ? m_dirLightAxis + 0.0001 : 0;
+	m_dirLightAxis = m_dirLightAxis < Ogre::Math::TWO_PI ? m_dirLightAxis + 0.001 : 0;
 
-	return true;
+	return ret;
 }
 
-void TutorialSampleCLS::InitAmbientLight()
+void LightSample::InitAmbientLight()
 {
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
 	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 }
 
-void TutorialSampleCLS::CreateSpotLight()
+void LightSample::CreateSpotLight()
 {
 	Ogre::Light* spotLight = mSceneMgr->createLight("SpotLight");
 	spotLight->setType(Ogre::Light::LT_SPOTLIGHT);
@@ -59,7 +59,7 @@ void TutorialSampleCLS::CreateSpotLight()
 	spotLight->setSpotlightRange(Ogre::Degree(35), Ogre::Degree(50));
 }
 
-void TutorialSampleCLS::CreatePointLight()
+void LightSample::CreatePointLight()
 {
 	Ogre::Light* pointLight = mSceneMgr->createLight("PointLight");
 	pointLight->setType(Ogre::Light::LT_POINT);
@@ -69,7 +69,7 @@ void TutorialSampleCLS::CreatePointLight()
 	pointLight->setAttenuation(600, 1.0, 0.007, 0.0002);
 }
 
-void TutorialSampleCLS::CreateDirectionalLight()
+void LightSample::CreateDirectionalLight()
 {
 	directionalLight = mSceneMgr->createLight("DirectionalLight");
 	directionalLight->setType(Ogre::Light::LT_DIRECTIONAL);
@@ -77,7 +77,7 @@ void TutorialSampleCLS::CreateDirectionalLight()
 	directionalLight->setSpecularColour(Ogre::ColourValue(1, 0.8, 0));
 }
 
-void TutorialSampleCLS::CreateGround()
+void LightSample::CreateGround()
 {
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 	Ogre::String name = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
@@ -89,7 +89,7 @@ void TutorialSampleCLS::CreateGround()
 	groundEntity->setCastShadows(false);
 }
 
-void TutorialSampleCLS::CreateNinja()
+void LightSample::CreateNinja()
 {
 	Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("ninja.mesh");
 	ninjaEntity->setCastShadows(true);

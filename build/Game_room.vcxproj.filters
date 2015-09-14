@@ -30,10 +30,13 @@
     <ClCompile Include="..\src\PhysicsSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\TutorialSampleCLS.cpp">
+    <ClCompile Include="..\src\InputSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\InputSample.cpp">
+    <ClCompile Include="..\src\TutorialApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\LightSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\InputBufferSample.cpp">
@@ -56,10 +59,13 @@
     <ClInclude Include="..\src\PhysicsSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\TutorialSampleCLS.h">
+    <ClInclude Include="..\src\InputSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\InputSample.h">
+    <ClInclude Include="..\src\TutorialApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\LightSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\InputBufferSample.h">

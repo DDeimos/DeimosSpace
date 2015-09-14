@@ -60,6 +60,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>..\engine\lib\Debug\OgreMain_d.lib;..\engine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\engine\lib\Debug\OgreOverlay_d.lib;..\engine\lib\Debug\OIS_d.lib;..\engine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)media/terrain_00000000.dat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -79,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\TutorialApplication.cpp" />
     <ClCompile Include="..\src\InputBufferSample.cpp" />
     <ClCompile Include="..\src\InputSample.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -86,9 +90,10 @@
     <ClCompile Include="..\src\PhysicsSample.cpp" />
     <ClCompile Include="..\src\Samples.cpp" />
     <ClCompile Include="..\src\TerrainSample.cpp" />
-    <ClCompile Include="..\src\TutorialSampleCLS.cpp" />
+    <ClCompile Include="..\src\LightSample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\TutorialApplication.h" />
     <ClInclude Include="..\src\InputBufferSample.h" />
     <ClInclude Include="..\src\InputSample.h" />
     <ClInclude Include="..\src\main.h" />
@@ -96,7 +101,7 @@
     <ClInclude Include="..\src\PhysicsSample.h" />
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
-    <ClInclude Include="..\src\TutorialSampleCLS.h" />
+    <ClInclude Include="..\src\LightSample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
