@@ -1,5 +1,5 @@
-#ifndef __BaseApplication_h_
-#define __BaseApplication_h_
+#ifndef BASE_APPLICATION_H
+#define BASE_APPLICATION_H
 
 #include <OgreCamera.h>
 #include <OgreEntity.h>
@@ -115,4 +115,4 @@ protected:
 #endif
 };
 
-#endif // #ifndef __BaseApplication_h_
+#endif

@@ -1,3 +1,6 @@
+#ifndef LIGHT_SAMPLE_H
+#define LIGHT_SAMPLE_H
+
 #include "BaseApplication.h"
 
 class LightSample : public BaseApplication
@@ -22,3 +25,5 @@ private:
 	Ogre::Light* directionalLight;
 	Ogre::Real m_dirLightAxis;
 };
+
+#endif

@@ -1,9 +1,13 @@
+#ifndef SAMPLE_H
+#define SAMPLE_H
+
 #include <windows.h>
 #include "BaseApplication.h"
 #include "TerrainSample.h"
 #include "PhysicsSample.h"
 #include "LightSample.h"
 #include "InputSample.h"
+#include "MultiMgrSample.h"
 
 using namespace std;
 
@@ -21,3 +25,5 @@ public:
 private:
 	map<Ogre::String, BaseApplication*> m_samples;
 };
+
+#endif

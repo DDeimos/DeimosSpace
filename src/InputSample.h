@@ -1,3 +1,6 @@
+#ifndef INPUT_SAMPLE_H
+#define INPUT_SAMPLE_H
+
 #include "BaseApplication.h"
  
 class InputSample : public BaseApplication
@@ -15,3 +18,5 @@ private:
   bool processUnbufferedInput(const Ogre::FrameEvent& fe);
  
 };
+
+#endif

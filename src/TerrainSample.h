@@ -1,3 +1,6 @@
+#ifndef TERRAIN_SAMPLE_H
+#define TERRAIN_SAMPLE_H
+
 #include <Terrain/OgreTerrain.h>
 #include <Terrain/OgreTerrainGroup.h>
 
@@ -25,3 +28,5 @@ private:
 	Ogre::TerrainGlobalOptions* mTerrainGlobals;
 	OgreBites::Label* mInfoLabel;
 };
+
+#endif
