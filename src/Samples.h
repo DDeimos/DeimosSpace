@@ -3,6 +3,7 @@
 #include "TerrainSample.h"
 #include "PhysicsSample.h"
 #include "TutorialSampleCLS.h"
+#include "InputSample.h"
 
 using namespace std;
 
