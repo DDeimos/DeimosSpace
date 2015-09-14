@@ -82,22 +82,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\TutorialApplication.cpp" />
     <ClCompile Include="..\src\InputSample.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\BaseApplication.cpp" />
     <ClCompile Include="..\src\PhysicsSample.cpp" />
     <ClCompile Include="..\src\Samples.cpp" />
     <ClCompile Include="..\src\TerrainSample.cpp" />
-    <ClCompile Include="..\src\TutorialSampleCLS.cpp" />
+    <ClCompile Include="..\src\LightSample.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\TutorialApplication.h" />
     <ClInclude Include="..\src\InputSample.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\BaseApplication.h" />
     <ClInclude Include="..\src\PhysicsSample.h" />
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
-    <ClInclude Include="..\src\TutorialSampleCLS.h" />
+    <ClInclude Include="..\src\LightSample.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

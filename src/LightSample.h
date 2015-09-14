@@ -1,10 +1,10 @@
 #include "BaseApplication.h"
 
-class TutorialSampleCLS : public BaseApplication
+class LightSample : public BaseApplication
 {
 public:
-	TutorialSampleCLS();
-	virtual ~TutorialSampleCLS();
+	LightSample();
+	virtual ~LightSample();
 
 protected:
 	virtual void createScene();
