@@ -7,6 +7,7 @@
 #include "PhysicsSample.h"
 #include "LightSample.h"
 #include "InputSample.h"
+#include "InputBufferSample.h"
 #include "MultiMgrSample.h"
 
 using namespace std;

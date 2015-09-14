@@ -27,6 +27,7 @@ void CSamples::InitSamples()
 	m_samples["PhysicsSample"] = new PhysicsSample();
 	m_samples["LightSample"] = new LightSample();
 	m_samples["InputSample"] = new InputSample();
+	m_samples["InputBufferSample"] = new InputBufferSample();
 	m_samples["MultiMgrSample"] = new MultiMgrSample();
 }
 

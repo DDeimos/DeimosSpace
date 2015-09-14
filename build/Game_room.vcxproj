@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
     <ClCompile Include="..\src\TutorialApplication.cpp" />
+    <ClCompile Include="..\src\InputBufferSample.cpp" />
     <ClCompile Include="..\src\InputSample.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\BaseApplication.cpp" />
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\MultiMgrSample.h" />
     <ClInclude Include="..\src\TutorialApplication.h" />
+    <ClInclude Include="..\src\InputBufferSample.h" />
     <ClInclude Include="..\src\InputSample.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\BaseApplication.h" />
