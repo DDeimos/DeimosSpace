@@ -29,6 +29,7 @@ void CSamples::InitSamples()
 	m_samples["InputSample"] = new InputSample();
 	m_samples["InputBufferSample"] = new InputBufferSample();
 	m_samples["MultiMgrSample"] = new MultiMgrSample();
+	m_samples["AnimationSample"] = new AnimationSample();
 }
 
 void CSamples::LoadStartSample()
