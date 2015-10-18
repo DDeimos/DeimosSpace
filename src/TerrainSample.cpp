@@ -14,9 +14,9 @@ TerrainSample::~TerrainSample()
 void TerrainSample::createScene()
 {
 	// Fog
-	Ogre::ColourValue fadeColour(0.6, 0.6, 0.6);
+	/*Ogre::ColourValue fadeColour(0.6, 0.6, 0.6);
 	mSceneMgr->setFog(Ogre::FOG_EXP, fadeColour, 0.002);
-	mWindow->getViewport(0)->setBackgroundColour(fadeColour);
+	mWindow->getViewport(0)->setBackgroundColour(fadeColour);*/
 
 	BaseApplication::createScene();
 
@@ -198,5 +198,3 @@ void TerrainSample::configureTerrainDefaults(Ogre::Light* light)
 	importData.layerList[2].textureNames.push_back("growth_weirdfungus-03_diffusespecular.dds");
 	importData.layerList[2].textureNames.push_back("growth_weirdfungus-03_normalheight.dds");	
 }
-
-// MAIN FUNCTION OMITTED FOR SPACE

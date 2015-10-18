@@ -61,7 +61,7 @@
       <AdditionalDependencies>..\engine\lib\Debug\OgreMain_d.lib;..\engine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\engine\lib\Debug\OgreOverlay_d.lib;..\engine\lib\Debug\OIS_d.lib;..\engine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)media/terrain_00000000.dat"</Command>
+      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)media/terrain_00000000.dat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
+    <ClCompile Include="..\src\TerrainCollisionSample.cpp" />
     <ClCompile Include="..\src\TutorialApplication.cpp" />
     <ClCompile Include="..\src\InputBufferSample.cpp" />
     <ClCompile Include="..\src\InputSample.cpp" />
@@ -95,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\MultiMgrSample.h" />
+    <ClInclude Include="..\src\TerrainCollisionSample.h" />
     <ClInclude Include="..\src\TutorialApplication.h" />
     <ClInclude Include="..\src\InputBufferSample.h" />
     <ClInclude Include="..\src\InputSample.h" />

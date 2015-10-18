@@ -9,6 +9,7 @@
 #include "InputSample.h"
 #include "InputBufferSample.h"
 #include "MultiMgrSample.h"
+#include "TerrainCollisionSample.h"
 
 using namespace std;
 
