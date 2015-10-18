@@ -45,6 +45,9 @@
     <ClCompile Include="..\src\MultiMgrSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\TerrainCollisionSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\AnimationSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\MultiMgrSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TerrainCollisionSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\AnimationSample.h">

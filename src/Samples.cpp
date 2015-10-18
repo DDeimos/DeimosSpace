@@ -30,6 +30,7 @@ void CSamples::InitSamples()
 	m_samples["InputBufferSample"] = new InputBufferSample();
 	m_samples["MultiMgrSample"] = new MultiMgrSample();
 	m_samples["AnimationSample"] = new AnimationSample();
+	m_samples["TerrainCollisionSample"] = new TerrainCollisionSample();
 }
 
 void CSamples::LoadStartSample()

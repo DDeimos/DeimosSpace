@@ -1,7 +1,7 @@
 #include "InputBufferSample.h"
 
 InputBufferSample::InputBufferSample()
-  : mRotate(.13),
+  : mRotate(0.13),
     mMove(250),
     mCamNode(0),
     mDirection(Ogre::Vector3::ZERO)
@@ -27,19 +27,17 @@ void InputBufferSample::createScene()
   light->setDiffuseColour(Ogre::ColourValue::White);
   light->setSpecularColour(Ogre::ColourValue::White);
 
-  //mCamera->setPosition(0, -370, 1000);
+  mCamera->setPosition(Ogre::Vector3(1, 1, 1));
+  mCamera->lookAt(Ogre::Vector3(0, 0, 0));
  
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode(
-    "CamNode1", Ogre::Vector3(1200, -370, 0));
-  node->yaw(Ogre::Degree(90));
+    "CamNode1", Ogre::Vector3(1000, 1000, 1000));
  
   mCamNode = node;
   node->attachObject(mCamera);
  
   node = mSceneMgr->getRootSceneNode()->createChildSceneNode(
-    "CamNode2", Ogre::Vector3(-500, -370, 1000));
-  node->yaw(Ogre::Degree(-30));
- 
+    "CamNode2", Ogre::Vector3(500, 500, 500));
 }
  
 bool InputBufferSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
@@ -160,8 +158,7 @@ bool InputBufferSample::mouseMoved(const OIS::MouseEvent& me)
   return true;
 }
  
-bool InputBufferSample::mousePressed(
-  const OIS::MouseEvent& me, OIS::MouseButtonID id)
+bool InputBufferSample::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
   Ogre::Light* light = mSceneMgr->getLight("Light1");
  
@@ -177,51 +174,7 @@ bool InputBufferSample::mousePressed(
   return true;
 }
  
-bool InputBufferSample::mouseReleased(
-  const OIS::MouseEvent& me, OIS::MouseButtonID id)
+bool InputBufferSample::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id)
 {
   return true;
 }
- 
- 
-/*#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
-#endif
- 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
- 
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-  INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
-#else
-  int main(int argc, char *argv[])
-#endif
-  {
-    TutorialApplication app;
- 
-    try
-    {
-      app.go();
-    }
-    catch(Ogre::Exception& e)
-    {
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-      MessageBox(
-	NULL,
-	e.getFullDescription().c_str(),
-	"An exception has occured!",
-	MB_OK | MB_ICONERROR | MB_TASKMODAL);
-#else
-      std::cerr << "An exception has occured: " <<
-	e.getFullDescription().c_str() << std::endl;
-#endif
-    }
- 
-    return 0;
-  }
-#ifdef __cplusplus
-}
-#endif*/
