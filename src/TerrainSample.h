@@ -18,7 +18,6 @@ protected:
 	virtual void destroyScene();
 	virtual bool frameRenderingQueued(const Ogre::FrameEvent& fe);
 
-private:
 	void defineTerrain(long x, long y);
 	void initBlendMaps(Ogre::Terrain* terrain);
 	void configureTerrainDefaults(Ogre::Light* light);

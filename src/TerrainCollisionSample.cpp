@@ -12,9 +12,6 @@ TerrainCollisionSample::~TerrainCollisionSample()
 void TerrainCollisionSample::createScene()
 {
 	TerrainSample::createScene();
-
-	// World geometry
-	//mSceneMgr->setWorldGeometry("terrain.cfg");
 }
 
 void TerrainCollisionSample::createFrameListener()
@@ -35,8 +32,7 @@ void TerrainCollisionSample::createFrameListener()
 
 void TerrainCollisionSample::chooseSceneManager()
 {
-	// Use the terrain scene manager.
-	mSceneMgr = mRoot->createSceneManager(Ogre::ST_EXTERIOR_CLOSE);
+	BaseApplication::chooseSceneManager();
 }
 
 bool TerrainCollisionSample::frameRenderingQueued(const Ogre::FrameEvent &evt)
@@ -61,6 +57,8 @@ bool TerrainCollisionSample::frameRenderingQueued(const Ogre::FrameEvent &evt)
 			mCamera->setPosition( camPos.x, terrainHeight + 10.0f, camPos.z );
 		}
 	}
+
+	handleCameraCollision();
 
 	return true;
 }
@@ -124,6 +122,7 @@ bool TerrainCollisionSample::mousePressed(const OIS::MouseEvent &arg, OIS::Mouse
 
 	return true;
 }
+
 bool TerrainCollisionSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
 	if (id == OIS::MB_Left)
@@ -137,4 +136,22 @@ bool TerrainCollisionSample::mouseReleased(const OIS::MouseEvent &arg, OIS::Mous
 	}
 
 	return true;
+}
+
+void TerrainCollisionSample::handleCameraCollision()
+{
+	Ogre::Vector3 camPos = mCamera->getPosition();
+	Ogre::Ray camRay(
+		Ogre::Vector3(camPos.x, 5000.0, camPos.z),
+		Ogre::Vector3::NEGATIVE_UNIT_Y);
+
+	Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(camRay);
+
+	if (result.terrain)
+	{
+		Ogre::Real terrainHeight = result.position.y;
+
+		if (camPos.y < (terrainHeight + 10.0))
+			mCamera->setPosition(camPos.x, terrainHeight + 10.0, camPos.z);
+	}
 }
