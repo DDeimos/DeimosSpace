@@ -71,15 +71,12 @@ bool TerrainCollisionSample::mouseMoved(const OIS::MouseEvent &arg)
 	if (mLMouseDown)
 	{
 		Ogre::Ray mouseRay = mTrayMgr->getCursorRay(mCamera);
+		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
-		mRaySceneQuery->setRay(mouseRay);
-		Ogre::RaySceneQueryResult &result = mRaySceneQuery->execute();
-		Ogre::RaySceneQueryResult::iterator itr = result.begin();
-		if (itr != result.end() && itr->worldFragment)
+		if (result.terrain)
 		{
-			mCurrentObject->setPosition(itr->worldFragment->singleIntersection);
+			mCurrentObject->setPosition(result.position);
 		}
-
 	}
 	else if (mRMouseDown)
 	{
@@ -95,19 +92,14 @@ bool TerrainCollisionSample::mousePressed(const OIS::MouseEvent &arg, OIS::Mouse
 	if (id == OIS::MB_Left)
 	{
 		Ogre::Ray mouseRay = mTrayMgr->getCursorRay(mCamera);
+		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
-		mRaySceneQuery->setRay(mouseRay);
-		// Execute query
-		Ogre::RaySceneQueryResult &result = mRaySceneQuery->execute();
-		Ogre::RaySceneQueryResult::iterator itr = result.begin( );
-
-		// Get results, create a node/entity on the position
-		if (itr != result.end() && itr->worldFragment)
+		if (result.terrain)
 		{
 			char name[16];
 			sprintf( name, "Robot%d", mCount++ );
 			Ogre::Entity *ent = mSceneMgr->createEntity(name, "robot.mesh");
-			mCurrentObject = mSceneMgr->getRootSceneNode()->createChildSceneNode(std::string(name)+ "Node", itr->worldFragment->singleIntersection);
+			mCurrentObject = mSceneMgr->getRootSceneNode()->createChildSceneNode(std::string(name)+ "Node", result.position);
 			mCurrentObject->attachObject(ent);
 			mCurrentObject->setScale(0.1f, 0.1f, 0.1f);
 		}
