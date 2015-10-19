@@ -19,7 +19,6 @@ protected:
 	virtual bool mouseMoved(const OIS::MouseEvent &arg);
 	virtual bool mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 	virtual bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
-	virtual void handleCameraCollision();
 
 private:
 	Ogre::RaySceneQuery *mRaySceneQuery; // The ray scene query pointer

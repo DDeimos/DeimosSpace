@@ -40,25 +40,17 @@ bool TerrainCollisionSample::frameRenderingQueued(const Ogre::FrameEvent &evt)
 	if (!TerrainSample::frameRenderingQueued(evt))
 		return false;
 
-	// Setup the scene query
 	Ogre::Vector3 camPos = mCamera->getPosition();
-	Ogre::Ray cameraRay(Ogre::Vector3(camPos.x, 5000.0f, camPos.z), Ogre::Vector3::NEGATIVE_UNIT_Y);
-	mRaySceneQuery->setRay(cameraRay);
+	Ogre::Ray camRay(Ogre::Vector3(camPos.x, 5000.0, camPos.z), Ogre::Vector3::NEGATIVE_UNIT_Y);
+	Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(camRay);
 
-	// Perform the scene query
-	Ogre::RaySceneQueryResult &result = mRaySceneQuery->execute();
-	Ogre::RaySceneQueryResult::iterator itr = result.begin();
-	// Get the results, set the camera height
-	if (itr != result.end() && itr->worldFragment)
+	if (result.terrain)
 	{
-		Ogre::Real terrainHeight = itr->worldFragment->singleIntersection.y;
-		if ((terrainHeight + 10.0f) > camPos.y)
-		{
-			mCamera->setPosition( camPos.x, terrainHeight + 10.0f, camPos.z );
-		}
-	}
+		Ogre::Real terrainHeight = result.position.y;
 
-	handleCameraCollision();
+		if (camPos.y < (terrainHeight + 10.0))
+			mCamera->setPosition(camPos.x, terrainHeight + 10.0, camPos.z);
+	}
 
 	return true;
 }
@@ -128,22 +120,4 @@ bool TerrainCollisionSample::mouseReleased(const OIS::MouseEvent &arg, OIS::Mous
 	}
 
 	return true;
-}
-
-void TerrainCollisionSample::handleCameraCollision()
-{
-	Ogre::Vector3 camPos = mCamera->getPosition();
-	Ogre::Ray camRay(
-		Ogre::Vector3(camPos.x, 5000.0, camPos.z),
-		Ogre::Vector3::NEGATIVE_UNIT_Y);
-
-	Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(camRay);
-
-	if (result.terrain)
-	{
-		Ogre::Real terrainHeight = result.position.y;
-
-		if (camPos.y < (terrainHeight + 10.0))
-			mCamera->setPosition(camPos.x, terrainHeight + 10.0, camPos.z);
-	}
 }

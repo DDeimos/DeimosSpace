@@ -72,7 +72,8 @@ void TerrainSample::destroyScene()
 
 bool TerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
-	bool ret = BaseApplication::frameRenderingQueued(fe);
+	if (!BaseApplication::frameRenderingQueued(fe))
+		return false;
 
 	//Terrain Loading Label
 	if (mTerrainGroup->isDerivedDataUpdateInProgress())
@@ -99,7 +100,7 @@ bool TerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 		}
 	}
 
-	return ret;
+	return true;
 }
 
 void getTerrainImage(bool flipX, bool flipY, Ogre::Image& img)
