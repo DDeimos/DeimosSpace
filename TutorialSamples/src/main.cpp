@@ -1,4 +1,3 @@
-#include "main.h"
 #include "Samples.h"
 
 #define WIN32_LEAN_AND_MEAN
