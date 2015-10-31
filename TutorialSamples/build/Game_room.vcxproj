@@ -53,15 +53,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../engine/boost;../engine/include/OGRE;../engine/include;../engine/include/OIS;../engine/include/OGRE/Overlay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../OgreEngine/boost;../../OgreEngine/include/OGRE;../../OgreEngine/include;../../OgreEngine/include/OIS;../../OgreEngine/include/OGRE/Overlay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\engine\lib\Debug\OgreMain_d.lib;..\engine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\engine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\engine\lib\Debug\OgreOverlay_d.lib;..\engine\lib\Debug\OIS_d.lib;..\engine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\OgreEngine\lib\Debug\OgreMain_d.lib;..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\..\OgreEngine\lib\Debug\OgreOverlay_d.lib;..\..\OgreEngine\lib\Debug\OIS_d.lib;..\..\OgreEngine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)media/terrain_00000000.dat"</Command>
+      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)../../DataFiles/terrain_00000000.dat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
