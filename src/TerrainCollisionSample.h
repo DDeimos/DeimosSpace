@@ -21,11 +21,10 @@ protected:
 	virtual bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 
 private:
-	Ogre::RaySceneQuery *mRaySceneQuery; // The ray scene query pointer
-	bool mLMouseDown, mRMouseDown; // True if the mouse buttons are down
 	Ogre::SceneNode *mCurrentObject; // The newly created object
+	bool mLMouseDown, mRMouseDown; // True if the mouse buttons are down
+	double mRotateSpeed; // The speed of camera rotation
 	int mCount; // The number of robots on the screen
-	double mRotateSpeed;
 };
 
 #endif

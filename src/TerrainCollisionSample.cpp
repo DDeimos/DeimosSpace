@@ -6,7 +6,6 @@ TerrainCollisionSample::TerrainCollisionSample()
 
 TerrainCollisionSample::~TerrainCollisionSample()
 {
-	mSceneMgr->destroyQuery(mRaySceneQuery);
 }
 
 void TerrainCollisionSample::createScene()
@@ -24,8 +23,6 @@ void TerrainCollisionSample::createFrameListener()
 	mRMouseDown = false;
 	mRotateSpeed = 0.1;
 
-	// Create RaySceneQuery
-	mRaySceneQuery = mSceneMgr->createRayQuery(Ogre::Ray());
 	//SdkTray - version - to get the mouse cursor on the screen:
 	mTrayMgr->showCursor();
 }
@@ -88,12 +85,10 @@ bool TerrainCollisionSample::mousePressed(const OIS::MouseEvent &arg, OIS::Mouse
 
 		if (result.terrain)
 		{
-			char name[16];
-			sprintf( name, "Robot%d", mCount++ );
+			std::string name = "T " + std::to_string(++mCount);
 			Ogre::Entity *ent = mSceneMgr->createEntity(name, "robot.mesh");
-			mCurrentObject = mSceneMgr->getRootSceneNode()->createChildSceneNode(std::string(name)+ "Node", result.position);
+			mCurrentObject = mSceneMgr->getRootSceneNode()->createChildSceneNode(name + " Node", result.position);
 			mCurrentObject->attachObject(ent);
-			mCurrentObject->setScale(0.1f, 0.1f, 0.1f);
 		}
 
 		mLMouseDown = true;

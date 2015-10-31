@@ -1826,6 +1826,7 @@ namespace OgreBites
 		Ogre::OverlayContainer* getBackdropContainer() { return mBackdrop; }
 		Ogre::OverlayContainer* getCursorContainer() { return mCursor; }
 		Ogre::OverlayElement* getCursorImage() { return mCursor->getChild(mCursor->getName() + "/CursorImage"); }
+		Ogre::Vector2 getCursorPos() { return Ogre::Vector2(mCursor->_getLeft(), mCursor->_getTop()); }
 
 		void setListener(SdkTrayListener* listener)
 		{

@@ -11,6 +11,7 @@
 #include "MultiMgrSample.h"
 #include "TerrainCollisionSample.h"
 #include "AnimationSample.h"
+#include "EntitySelectSample.h"
 
 using namespace std;
 

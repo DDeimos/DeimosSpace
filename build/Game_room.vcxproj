@@ -83,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\AnimationSample.cpp" />
+    <ClCompile Include="..\src\EntitySelectSample.cpp" />
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
     <ClCompile Include="..\src\TerrainCollisionSample.cpp" />
     <ClCompile Include="..\src\TutorialApplication.cpp" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AnimationSample.h" />
+    <ClInclude Include="..\src\EntitySelectSample.h" />
     <ClInclude Include="..\src\MultiMgrSample.h" />
     <ClInclude Include="..\src\TerrainCollisionSample.h" />
     <ClInclude Include="..\src\TutorialApplication.h" />
