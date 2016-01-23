@@ -53,12 +53,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../OgreEngine/boost;../../OgreEngine/include/OGRE;../../OgreEngine/include;../../OgreEngine/include/OIS;../../OgreEngine/include/OGRE/Overlay;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../OgreEngine/boost;../../OgreEngine/include/OGRE;../../OgreEngine/include;../../OgreEngine/include/OIS;../../OgreEngine/include/OGRE/Overlay;../../OgreEngine/include/MyGUI;../../OgreEngine/include/MyGUI/Platforms;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\OgreEngine\lib\Debug\OgreMain_d.lib;..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\..\OgreEngine\lib\Debug\OgreOverlay_d.lib;..\..\OgreEngine\lib\Debug\OIS_d.lib;..\..\OgreEngine\lib\Debug\OgreTerrain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\OgreEngine\lib\debug\OgreMain_d.lib;..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\..\OgreEngine\lib\debug\OgreOverlay_d.lib;..\..\OgreEngine\lib\debug\OIS_d.lib;..\..\OgreEngine\lib\debug\OgreTerrain_d.lib;..\..\OgreEngine\lib\debug\MyGUIEngine_d.lib;..\..\OgreEngine\lib\debug\MyGUI.OgrePlatform_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)../../DataFiles/terrain_00000000.dat"</Command>
@@ -85,6 +85,7 @@
     <ClCompile Include="..\src\AnimationSample.cpp" />
     <ClCompile Include="..\src\EntitySelectSample.cpp" />
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
+    <ClCompile Include="..\src\MyGUISample.cpp" />
     <ClCompile Include="..\src\TerrainCollisionSample.cpp" />
     <ClCompile Include="..\src\TutorialApplication.cpp" />
     <ClCompile Include="..\src\InputBufferSample.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="..\src\AnimationSample.h" />
     <ClInclude Include="..\src\EntitySelectSample.h" />
     <ClInclude Include="..\src\MultiMgrSample.h" />
+    <ClInclude Include="..\src\MyGUISample.h" />
     <ClInclude Include="..\src\TerrainCollisionSample.h" />
     <ClInclude Include="..\src\TutorialApplication.h" />
     <ClInclude Include="..\src\InputBufferSample.h" />

@@ -32,6 +32,7 @@ void CSamples::InitSamples()
 	m_samples["AnimationSample"] = new AnimationSample();
 	m_samples["TerrainCollisionSample"] = new TerrainCollisionSample();
 	m_samples["EntitySelectSample"] = new EntitySelectSample();
+	m_samples["MyGUISample"] = new MyGUISample();
 }
 
 void CSamples::LoadStartSample()

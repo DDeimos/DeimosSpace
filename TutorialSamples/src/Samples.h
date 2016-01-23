@@ -12,6 +12,7 @@
 #include "TerrainCollisionSample.h"
 #include "AnimationSample.h"
 #include "EntitySelectSample.h"
+#include "MyGUISample.h"
 
 using namespace std;
 
