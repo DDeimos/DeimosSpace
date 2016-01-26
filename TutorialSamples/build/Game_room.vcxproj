@@ -112,6 +112,7 @@
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
     <ClInclude Include="..\src\LightSample.h" />
+    <ClInclude Include="..\src\utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
