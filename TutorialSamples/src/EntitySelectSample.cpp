@@ -5,7 +5,6 @@ CCreature::CCreature(std::string name, bool robotMode, Ogre::SceneNode* node)
 	m_name = name;
 	m_mode = robotMode ? eCreatureMode::ROBOT : eCreatureMode::NINJA;
 	m_node = node;
-	m_offset = Ogre::Vector2(0, 0);
 }
 
 CCreature::~CCreature()
@@ -180,10 +179,6 @@ bool EntitySelectSample::SelectNodeUnderCursor()
 
 			if (creature != 0)
 			{
-				Ogre::Vector3 creaturePos = creature->GetNode()->getPosition();
-				Ogre::Vector2 originPos = mTrayMgr->sceneToScreen(mCamera, creaturePos);
-
-				creature->SetOffset(mTrayMgr->getCursorPos() - originPos);
 				creature->GetNode()->showBoundingBox(true);
 				break;
 			}
@@ -200,13 +195,10 @@ bool EntitySelectSample::SelectNodeUnderCursor()
 void EntitySelectSample::MoveNodeUnderCursor()
 {
 	CCreature* creature = GetSelectedCreature();
-	auto a = mTrayMgr->getCursorPos();
-	auto b = creature->GetOffset();
-	Ogre::Vector2 pos = mTrayMgr->getCursorPos() - creature->GetOffset();
-	Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, pos);
 
 	if (creature)
 	{
+		Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
 		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
 		if (result.terrain)

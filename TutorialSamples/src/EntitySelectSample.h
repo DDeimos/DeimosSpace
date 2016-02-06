@@ -11,15 +11,11 @@ public:
 	CCreature(std::string name, bool robotMode, Ogre::SceneNode* node);
 	~CCreature();
 
-	void SetOffset(Ogre::Vector2 offset) { m_offset = offset; }
-
 	std::string GetName() {return m_name; }
-	Ogre::Vector2 GetOffset() { return m_offset; }
 	Ogre::SceneNode* GetNode() { return m_node; }
 
 protected:
 	std::string m_name;
-	Ogre::Vector2 m_offset;
 	eCreatureMode m_mode;
 	Ogre::SceneNode* m_node;
 };
