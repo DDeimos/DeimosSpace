@@ -1,14 +1,75 @@
 #include "EntitySelectSample.h"
 
-CCreature::CCreature(std::string name, bool robotMode, Ogre::SceneNode* node)
+CCreature::CCreature(std::string name, bool robotMode, Ogre::Entity* entity, Ogre::SceneNode* node, float speed)
 {
 	m_name = name;
 	m_mode = robotMode ? eCreatureMode::ROBOT : eCreatureMode::NINJA;
+	m_entity = entity;
 	m_node = node;
+	m_speed = speed;
+
+	SetAnimation("Idle");
 }
 
 CCreature::~CCreature()
 {
+}
+
+void CCreature::SetAnimation(std::string name)
+{
+	mAnimation = m_entity->getAnimationState(name);
+	mAnimation->setLoop(true);
+	mAnimation->setEnabled(true);
+}
+
+void CCreature::SetTarget(Ogre::Vector3 scenePos)
+{
+	m_direction = scenePos - m_node->getPosition();
+	m_distance = m_direction.normalise();
+	m_direction.y = 0; // движение только по горизонтали
+
+	UpdateRotation();
+	SetAnimation("Walk");
+}
+
+void CCreature::UpdateRotation()
+{
+	Ogre::Vector3 src = m_node->getOrientation() * Ogre::Vector3::UNIT_X;
+
+	if ((1.0 + src.dotProduct(m_direction)) < 0.0001) // деление на ноль
+	{
+		m_node->yaw(Ogre::Degree(180));
+	}
+	else
+	{
+		Ogre::Quaternion quater = src.getRotationTo(m_direction);
+		m_node->rotate(quater);
+	}
+}
+
+void CCreature::Move(float dt, Ogre::TerrainGroup* terrainGroup)
+{
+	float step = m_speed * dt;
+
+	if (!IsFinished(step))
+	{
+		m_node->translate(m_direction * step);
+
+		Ogre::Vector3 pos = m_node->getPosition();
+		Ogre::Ray ray(Ogre::Vector3(pos.x, 5000.0, pos.z), Ogre::Vector3::NEGATIVE_UNIT_Y);
+		Ogre::TerrainGroup::RayResult result = terrainGroup->rayIntersects(ray);
+
+		if (result.terrain)
+		{
+			m_node->setPosition(pos.x, result.position.y, pos.z);
+		}
+	}
+	else
+	{
+		SetAnimation("Idle");
+	}
+
+	mAnimation->addTime(dt);
 }
 
 EntitySelectSample::EntitySelectSample()
@@ -17,6 +78,7 @@ EntitySelectSample::EntitySelectSample()
 	m_mode = true;
 	m_leftMouseDown = false;
 	m_rightMouseDown = false;
+	m_altDown = false;
 	m_movableFound = false;
 	m_rotateSpeed = 0.1;
 }
@@ -73,6 +135,44 @@ bool EntitySelectSample::frameRenderingQueued(const Ogre::FrameEvent &evt)
 			mCamera->setPosition(camPos.x, terrainHeight + 10.0, camPos.z);
 	}
 
+	CCreature* creature = GetSelectedCreature();
+	if (creature != 0)
+	{
+		creature->Move(evt.timeSinceLastFrame, mTerrainGroup);
+	}
+
+	return true;
+}
+
+bool EntitySelectSample::keyPressed(const OIS::KeyEvent& ke)
+{
+	if (!TerrainSample::keyPressed(ke))
+	{
+		return false;
+	}
+
+	if (ke.key == OIS::KeyCode::KC_LMENU)
+	{
+		mTrayMgr->hideCursor();
+		m_altDown = true;
+	}
+
+	return true;
+}
+
+bool EntitySelectSample::keyReleased(const OIS::KeyEvent& ke)
+{
+	if (!TerrainSample::keyReleased(ke))
+	{
+		return false;
+	}
+
+	if (m_altDown)
+	{
+		m_altDown = false;
+		mTrayMgr->showCursor();
+	}
+
 	return true;
 }
 
@@ -91,7 +191,6 @@ bool EntitySelectSample::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButt
 	}
 	else if (id == OIS::MB_Right)
 	{
-		mTrayMgr->hideCursor();
 		m_rightMouseDown = true;
 	}
 
@@ -107,7 +206,7 @@ bool EntitySelectSample::mouseMoved(const OIS::MouseEvent &arg)
 	{
 		MoveNodeUnderCursor();
 	}
-	if (m_rightMouseDown)
+	if (m_altDown)
 	{
 		mCamera->yaw(Ogre::Degree(-arg.state.X.rel * m_rotateSpeed));
 		mCamera->pitch(Ogre::Degree(-arg.state.Y.rel * m_rotateSpeed));
@@ -118,26 +217,25 @@ bool EntitySelectSample::mouseMoved(const OIS::MouseEvent &arg)
 
 bool EntitySelectSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
-	if (id == OIS::MB_Left)
+	if (m_leftMouseDown)
 	{
 		m_leftMouseDown = false;
 	}
-	else if (id == OIS::MB_Right)
+	else if (m_rightMouseDown)
 	{
-		mTrayMgr->showCursor();
 		m_rightMouseDown = false;
-	}
+		CCreature* creature = GetSelectedCreature();
 
-	return true;
-}
+		if (creature)
+		{
+			Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
+			Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
-bool EntitySelectSample::keyReleased(const OIS::KeyEvent& ke)
-{
-	if (!BaseApplication::keyReleased(ke)) return false;
-
-	if (ke.key == OIS::KC_SPACE)
-	{
-		m_mode = !m_mode;
+			if (result.terrain)
+			{
+				creature->SetTarget(result.position);
+			}
+		}
 	}
 
 	return true;
@@ -151,12 +249,12 @@ void EntitySelectSample::CreateNodeUnderCursor()
 	if (result.terrain)
 	{
 		std::string name = "T " + std::to_string(m_creatures.size() + 1);
-		Ogre::Entity *ent = mSceneMgr->createEntity(name, m_mode ? "robot.mesh" : "ninja.mesh");
+		Ogre::Entity *entity = mSceneMgr->createEntity(name, m_mode ? "robot.mesh" : "ninja.mesh");
 		Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode(name, result.position);
-		ent->setQueryFlags(m_mode ? eCreatureMode::ROBOT : eCreatureMode::NINJA);
-		node->attachObject(ent);
+		entity->setQueryFlags(m_mode ? eCreatureMode::ROBOT : eCreatureMode::NINJA);
+		node->attachObject(entity);
 		node->showBoundingBox(true);
-		m_creatures.push_back(new CCreature(name, m_mode, node));
+		m_creatures.push_back(new CCreature(name, m_mode, entity, node, 50.f));
 	}
 }
 
