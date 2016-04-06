@@ -13,6 +13,7 @@
 #include "AnimationSample.h"
 #include "EntitySelectSample.h"
 #include "MyGUISample.h"
+#include "MultiSelectSample.h"
 
 using namespace std;
 
@@ -23,12 +24,11 @@ public:
 	~CSamples();
 
 	void Load();
-	void InitSamples();
-	void LoadStartSample();
-	void RunStartSample(BaseApplication* app);
+	void RunStartSample();
+	BaseApplication* GetSampleObject(std::string startSample);
 
 private:
-	map<Ogre::String, BaseApplication*> m_samples;
+	BaseApplication* m_app;
 };
 
 #endif

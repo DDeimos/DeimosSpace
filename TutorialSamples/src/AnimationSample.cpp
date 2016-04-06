@@ -9,7 +9,6 @@ AnimationSample::AnimationSample()
     mResourcesCfg(Ogre::StringUtil::BLANK),
     mPluginsCfg(Ogre::StringUtil::BLANK),
     mCameraMan(0),
-    //mRenderer(0),
     mMouse(0),
     mKeyboard(0),
     mInputMgr(0),
@@ -25,12 +24,6 @@ AnimationSample::AnimationSample()
  
 AnimationSample::~AnimationSample()
 {
-  if (mCameraMan) delete mCameraMan;
- 
-  Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
-  windowClosed(mWindow);
- 
-  delete mRoot;
 }
  
 void AnimationSample::go()

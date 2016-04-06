@@ -2,40 +2,43 @@
 
 CSamples::CSamples()
 {
-	m_samples = map<Ogre::String, BaseApplication*>();
+	m_app = 0;
 }
 
 CSamples::~CSamples()
 {
-	for(auto i = m_samples.begin(); i != m_samples.end(); i++)
-	{
-		delete i->second;
-	}
+	delete m_app;
+}
 
-	m_samples.clear();
+BaseApplication* CSamples::GetSampleObject(std::string startSample)
+{
+	if(startSample == "TerrainSample") 
+		return new TerrainSample();
+	else if(startSample == "PhysicsSample") 
+		return new PhysicsSample();
+	else if(startSample == "LightSample") 
+		return new LightSample();
+	else if(startSample == "InputSample") 
+		return new InputSample();
+	else if(startSample == "InputBufferSample") 
+		return new InputBufferSample();
+	else if(startSample == "MultiMgrSample") 
+		return new MultiMgrSample();
+	else if(startSample == "AnimationSample") 
+		return new AnimationSample();
+	else if(startSample == "TerrainCollisionSample") 
+		return new TerrainCollisionSample();
+	else if(startSample == "EntitySelectSample") 
+		return new EntitySelectSample();
+	else if(startSample == "MyGUISample") 
+		return new MyGUISample();
+	else if(startSample == "MultiSelectSample") 
+		return new MultiSelectSample();
+
+	return 0;
 }
 
 void CSamples::Load()
-{
-	InitSamples();
-	LoadStartSample();
-}
-
-void CSamples::InitSamples()
-{
-	m_samples["TerrainSample"] = new TerrainSample();
-	m_samples["PhysicsSample"] = new PhysicsSample();
-	m_samples["LightSample"] = new LightSample();
-	m_samples["InputSample"] = new InputSample();
-	m_samples["InputBufferSample"] = new InputBufferSample();
-	m_samples["MultiMgrSample"] = new MultiMgrSample();
-	m_samples["AnimationSample"] = new AnimationSample();
-	m_samples["TerrainCollisionSample"] = new TerrainCollisionSample();
-	m_samples["EntitySelectSample"] = new EntitySelectSample();
-	m_samples["MyGUISample"] = new MyGUISample();
-}
-
-void CSamples::LoadStartSample()
 {
 	Ogre::ConfigFile cf;
 	cf.load("samples.cfg");
@@ -52,22 +55,22 @@ void CSamples::LoadStartSample()
 		{
 			if (i->first == "StartSample")
 			{
-				auto app = m_samples.find(i->second);
+				m_app = GetSampleObject(i->second);
 
-				if (app != m_samples.end())
+				if (m_app != 0)
 				{
-					RunStartSample(app->second);
+					RunStartSample();
 				}
 			}
 		}
 	}
 }
 
-void CSamples::RunStartSample(BaseApplication* app)
+void CSamples::RunStartSample()
 {
 	try 
 	{
-		app->go();
+		m_app->go();
 	}
 	catch( Ogre::Exception& e ) 
 	{

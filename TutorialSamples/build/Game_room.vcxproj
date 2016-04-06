@@ -85,6 +85,7 @@
     <ClCompile Include="..\src\AnimationSample.cpp" />
     <ClCompile Include="..\src\EntitySelectSample.cpp" />
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
+    <ClCompile Include="..\src\MultiSelectSample.cpp" />
     <ClCompile Include="..\src\MyGUISample.cpp" />
     <ClCompile Include="..\src\TerrainCollisionSample.cpp" />
     <ClCompile Include="..\src\TutorialApplication.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="..\src\AnimationSample.h" />
     <ClInclude Include="..\src\EntitySelectSample.h" />
     <ClInclude Include="..\src\MultiMgrSample.h" />
+    <ClInclude Include="..\src\MultiSelectSample.h" />
     <ClInclude Include="..\src\MyGUISample.h" />
     <ClInclude Include="..\src\TerrainCollisionSample.h" />
     <ClInclude Include="..\src\TutorialApplication.h" />
