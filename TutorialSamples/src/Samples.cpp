@@ -14,8 +14,6 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 {
 	if(startSample == "TerrainSample") 
 		return new TerrainSample();
-	else if(startSample == "PhysicsSample") 
-		return new PhysicsSample();
 	else if(startSample == "LightSample") 
 		return new LightSample();
 	else if(startSample == "InputSample") 
@@ -24,10 +22,6 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new InputBufferSample();
 	else if(startSample == "MultiMgrSample") 
 		return new MultiMgrSample();
-	else if(startSample == "AnimationSample") 
-		return new AnimationSample();
-	else if(startSample == "TerrainCollisionSample") 
-		return new TerrainCollisionSample();
 	else if(startSample == "EntitySelectSample") 
 		return new EntitySelectSample();
 	else if(startSample == "MyGUISample") 

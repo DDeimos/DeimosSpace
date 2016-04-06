@@ -10,7 +10,7 @@ static Ogre::Real move = 30;
 InputSample::InputSample()
 {
 }
- 
+
 InputSample::~InputSample()
 {
 }
@@ -22,17 +22,17 @@ void InputSample::createCamera()
 	mCamera->setPosition(Ogre::Vector3(200, 200, -200));
 	mCamera->lookAt(Ogre::Vector3(0, 0, 0));
 }
- 
+
 void InputSample::createScene()
 {
 	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.25, 0.25, 0.25));
- 
+
 	Ogre::Light* pointLight = mSceneMgr->createLight("PointLight");
 	pointLight->setType(Ogre::Light::LT_POINT);
 	pointLight->setPosition(250, 150, 250);
 	pointLight->setDiffuseColour(Ogre::ColourValue::White);
 	pointLight->setSpecularColour(Ogre::ColourValue::White);
- 
+
 	Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("ninja.mesh");
 	Ogre::SceneNode* ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode");
 	ninjaNode->attachObject(ninjaEntity); 
@@ -82,7 +82,7 @@ bool InputSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 		else
 			dirVec.x -= move;
 	}
- 
+
 	if (mKeyboard->isKeyDown(OIS::KC_L))
 	{
 		if(mKeyboard->isKeyDown(OIS::KC_LSHIFT))
@@ -92,8 +92,8 @@ bool InputSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 	}
 
 	mSceneMgr->getSceneNode("NinjaNode")->translate(
-	dirVec * fe.timeSinceLastFrame,
-	Ogre::Node::TS_LOCAL);
+		dirVec * fe.timeSinceLastFrame,
+		Ogre::Node::TS_LOCAL);
 
 #ifdef METHOD
 	if(!processUnbufferedInput(fe))
@@ -104,5 +104,5 @@ bool InputSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
 	return ret;	
 }
- 
+
 // MAIN FUNCTION OMITTED FOR SPACE

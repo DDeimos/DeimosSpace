@@ -27,7 +27,7 @@ void LightSample::createScene()
 	//CreateSpotLight();
 	CreatePointLight();
 	CreateDirectionalLight();
-	
+
 	CreateGround();
 	CreateNinja();
 }

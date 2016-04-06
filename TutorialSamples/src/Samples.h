@@ -4,13 +4,10 @@
 #include <windows.h>
 #include "BaseApplication.h"
 #include "TerrainSample.h"
-#include "PhysicsSample.h"
 #include "LightSample.h"
 #include "InputSample.h"
 #include "InputBufferSample.h"
 #include "MultiMgrSample.h"
-#include "TerrainCollisionSample.h"
-#include "AnimationSample.h"
 #include "EntitySelectSample.h"
 #include "MyGUISample.h"
 #include "MultiSelectSample.h"
