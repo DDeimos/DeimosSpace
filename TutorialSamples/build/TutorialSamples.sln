@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TutorialSamples", "TutorialSamples.vcxproj", "{C35F216B-95FC-4A0A-80AB-10261C0489AA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkyX", "SkyX\SkyX.vcxproj", "{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +15,10 @@ Global
 		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Debug|Win32.Build.0 = Debug|Win32
 		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Release|Win32.ActiveCfg = Release|Win32
 		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Release|Win32.Build.0 = Release|Win32
+		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Debug|Win32.Build.0 = Debug|Win32
+		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Release|Win32.ActiveCfg = Release|Win32
+		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
