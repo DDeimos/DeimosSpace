@@ -48,6 +48,9 @@
     <ClCompile Include="..\src\MultiSelectSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SkyXTerrainSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BaseApplication.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\MultiSelectSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SkyXTerrainSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

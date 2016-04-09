@@ -11,6 +11,7 @@
 #include "EntitySelectSample.h"
 #include "MyGUISample.h"
 #include "MultiSelectSample.h"
+#include "SkyXTerrainSample.h"
 
 using namespace std;
 

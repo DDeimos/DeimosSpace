@@ -28,6 +28,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new MyGUISample();
 	else if(startSample == "MultiSelectSample") 
 		return new MultiSelectSample();
+	else if(startSample == "SkyXTerrainSample") 
+		return new SkyXTerrainSample();
 
 	return 0;
 }
