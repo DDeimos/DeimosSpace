@@ -40,10 +40,10 @@ Ogre::String SkyXTerrainSample::GetSkyXOptions(const SkyX::AtmosphereManager::Op
 
 void SkyXTerrainSample::createScene()
 {
+	TerrainSample::createScene();
+
 	mCamera->setFarClipDistance(30000);
 	mCamera->setNearClipDistance(20);
-	mCamera->setPosition(20000, 1800, 20000);
-	mCamera->setDirection(1, 0, 1);
 
 	m_controller = new SkyX::BasicController();
 	m_controller->setMoonPhase(0.75f);
@@ -59,7 +59,7 @@ void SkyXTerrainSample::createScene()
 
 void SkyXTerrainSample::createFrameListener()
 {
-	BaseApplication::createFrameListener();
+	TerrainSample::createFrameListener();
 
 	/*m_info = mTrayMgr->createTextBox(OgreBites::TL_TOPLEFT, "TInfo", "", 420, 200);
 	mTrayMgr->moveWidgetToTray(m_info, OgreBites::TL_TOPLEFT, 0);*/
@@ -68,7 +68,7 @@ void SkyXTerrainSample::createFrameListener()
 // может быть нужно переместить в frameStarted?
 bool SkyXTerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 {
-	if (!BaseApplication::frameRenderingQueued(fe))
+	if (!TerrainSample::frameRenderingQueued(fe))
 	{
 		return false;
 	}
@@ -153,10 +153,14 @@ bool SkyXTerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 
 bool SkyXTerrainSample::keyPressed(const OIS::KeyEvent& ke)
 {
+	mCameraMan->injectKeyDown(ke);
+
 	return true;
 }
 
 bool SkyXTerrainSample::keyReleased(const OIS::KeyEvent& ke)
 {
+	mCameraMan->injectKeyUp(ke);
+
 	return true;
 }

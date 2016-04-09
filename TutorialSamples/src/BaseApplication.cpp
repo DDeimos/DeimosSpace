@@ -78,7 +78,7 @@ void BaseApplication::createCamera(void)
 	// Create the camera
 	mCamera = mSceneMgr->createCamera("PlayerCam");
 
-	mCamera->setPosition(Ogre::Vector3(1683, 50, 2116));
+	mCamera->setPosition(Ogre::Vector3(1683, 100, 2116));
 	mCamera->lookAt(Ogre::Vector3(1963, 50, 1660));
 	mCamera->setNearClipDistance(0.1);
 	mCamera->setFarClipDistance(0);
@@ -143,11 +143,11 @@ void BaseApplication::createFrameListener(void)
 void BaseApplication::createScene(void)
 {
 	// Sky
-	Ogre::Plane plane;
+	/**Ogre::Plane plane;
 	plane.d = 100;
 	plane.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
 
-	mSceneMgr->setSkyPlane(true, plane, "Examples/CloudySky", 500, 20, true, 0.5, 150, 150);
+	mSceneMgr->setSkyPlane(true, plane, "Examples/CloudySky", 500, 20, true, 0.5, 150, 150);*/
 
 	// Light
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);

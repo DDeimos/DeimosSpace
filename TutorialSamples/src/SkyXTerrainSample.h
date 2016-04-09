@@ -2,9 +2,9 @@
 #define SKYX_TERRAIN_SAMPLE_H
 
 #include <SkyX.h>
-#include "BaseApplication.h"
+#include "TerrainSample.h"
 
-class SkyXTerrainSample : public BaseApplication
+class SkyXTerrainSample : public TerrainSample
 {
 public:
 	SkyXTerrainSample();
