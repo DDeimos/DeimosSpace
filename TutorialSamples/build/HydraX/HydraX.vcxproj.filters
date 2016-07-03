@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Modules">
+      <UniqueIdentifier>{b7057576-aeb3-482c-bbaa-9249b2747a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules">
+      <UniqueIdentifier>{7f6aa3fe-f422-4924-9461-951b674d48d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Noise">
+      <UniqueIdentifier>{9301173f-2d6a-4bb4-83aa-4f72aa27e072}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Noise">
+      <UniqueIdentifier>{f42d4d64-e86a-41d5-8e0b-759086e91bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\ProjectedGrid">
+      <UniqueIdentifier>{14a30133-c330-42b5-a426-25e9770005f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\RadialGrid">
+      <UniqueIdentifier>{ed70bf4c-1f53-4ec3-a43e-6fe6014582da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modules\SimpleGrid">
+      <UniqueIdentifier>{ebfaf00b-0996-46c3-93c3-f2fd8a3dbbd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\ProjectedGrid">
+      <UniqueIdentifier>{6536f16b-a8fa-4ff8-9a9e-abd5e91fe849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\RadialGrid">
+      <UniqueIdentifier>{5b66e378-41b7-41f2-9210-ec32a1f9b525}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modules\SimpleGrid">
+      <UniqueIdentifier>{d5268b3d-3521-415b-b5a6-a8a1430c734d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Noise\FFT">
+      <UniqueIdentifier>{625ad731-0a69-470e-b41e-ae4a6a86e00e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Noise\FFT">
+      <UniqueIdentifier>{25b22778-409f-45be-b523-b7a86522bab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Noise\Perlin">
+      <UniqueIdentifier>{7ea11f3f-5a00-479c-a13e-95e4d1baeb3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Noise\Perlin">
+      <UniqueIdentifier>{0778df81-5981-4169-abe6-3b37f2451db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Noise\Real">
+      <UniqueIdentifier>{7aaa367f-b845-412e-a4b4-3ea1c15e7d13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Noise\Real">
+      <UniqueIdentifier>{2ab27bc6-4c74-41aa-b56e-78b200467107}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\HydraX\CfgFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\DecalsManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Enums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\GodRaysManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\GPUNormalMapManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Help.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Hydrax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\MaterialManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Prerequisites.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\RttManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\TextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Modules\Module.cpp">
+      <Filter>Source Files\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Modules\ProjectedGrid\ProjectedGrid.cpp">
+      <Filter>Source Files\Modules\ProjectedGrid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Modules\RadialGrid\RadialGrid.cpp">
+      <Filter>Source Files\Modules\RadialGrid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Modules\SimpleGrid\SimpleGrid.cpp">
+      <Filter>Source Files\Modules\SimpleGrid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\Noise.cpp">
+      <Filter>Source Files\Noise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\FFT\FFT.cpp">
+      <Filter>Source Files\Noise\FFT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\Perlin\Perlin.cpp">
+      <Filter>Source Files\Noise\Perlin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\Real\PressurePoint.cpp">
+      <Filter>Source Files\Noise\Real</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\Real\Real.cpp">
+      <Filter>Source Files\Noise\Real</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\HydraX\Noise\Real\Wave.cpp">
+      <Filter>Source Files\Noise\Real</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\HydraX\CfgFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\DecalsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\GodRaysManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\GPUNormalMapManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Help.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Hydrax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\MaterialManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Prerequisites.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\RttManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Modules\Module.h">
+      <Filter>Header Files\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Modules\ProjectedGrid\ProjectedGrid.h">
+      <Filter>Header Files\Modules\ProjectedGrid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Modules\RadialGrid\RadialGrid.h">
+      <Filter>Header Files\Modules\RadialGrid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Modules\SimpleGrid\SimpleGrid.h">
+      <Filter>Header Files\Modules\SimpleGrid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\Noise.h">
+      <Filter>Header Files\Noise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\FFT\FFT.h">
+      <Filter>Header Files\Noise\FFT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\Perlin\Perlin.h">
+      <Filter>Header Files\Noise\Perlin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\Real\PressurePoint.h">
+      <Filter>Header Files\Noise\Real</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\Real\Real.h">
+      <Filter>Header Files\Noise\Real</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\HydraX\Noise\Real\Wave.h">
+      <Filter>Header Files\Noise\Real</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
