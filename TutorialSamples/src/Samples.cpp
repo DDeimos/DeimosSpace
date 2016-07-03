@@ -30,6 +30,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new MultiSelectSample();
 	else if(startSample == "SkyXTerrainSample") 
 		return new SkyXTerrainSample();
+	else if(startSample == "HydraXTerrainSample") 
+		return new HydraXTerrainSample();
 
 	return 0;
 }

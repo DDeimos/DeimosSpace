@@ -12,6 +12,7 @@
 #include "MyGUISample.h"
 #include "MultiSelectSample.h"
 #include "SkyXTerrainSample.h"
+#include "HydraXTerrainSample.h"
 
 using namespace std;
 
