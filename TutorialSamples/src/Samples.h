@@ -13,6 +13,7 @@
 #include "MultiSelectSample.h"
 #include "SkyXTerrainSample.h"
 #include "HydraXTerrainSample.h"
+#include "SkyXHydraXSample.h"
 
 using namespace std;
 

@@ -93,6 +93,7 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\BaseApplication.cpp" />
     <ClCompile Include="..\src\Samples.cpp" />
+    <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
     <ClCompile Include="..\src\SkyXTerrainSample.cpp" />
     <ClCompile Include="..\src\TerrainSample.cpp" />
     <ClCompile Include="..\src\LightSample.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="..\src\InputSample.h" />
     <ClInclude Include="..\src\BaseApplication.h" />
     <ClInclude Include="..\src\Samples.h" />
+    <ClInclude Include="..\src\SkyXHydraXSample.h" />
     <ClInclude Include="..\src\SkyXTerrainSample.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
     <ClInclude Include="..\src\LightSample.h" />
