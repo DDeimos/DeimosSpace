@@ -28,6 +28,7 @@ void TerrainSample::createScene()
 
 	//Configuring the Terrain
 	mTerrainGlobals = OGRE_NEW Ogre::TerrainGlobalOptions();
+	mTerrainGlobals->setUseVertexCompressionWhenAvailable(false);
 
 	mTerrainGroup = OGRE_NEW Ogre::TerrainGroup(mSceneMgr, Ogre::Terrain::ALIGN_X_Z, 513, 12000.0);
 	mTerrainGroup->setFilenameConvention(Ogre::String("terrain"), Ogre::String("dat"));

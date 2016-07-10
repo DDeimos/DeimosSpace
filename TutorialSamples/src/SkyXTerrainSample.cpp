@@ -42,9 +42,6 @@ void SkyXTerrainSample::createScene()
 {
 	TerrainSample::createScene();
 
-	mCamera->setFarClipDistance(30000);
-	mCamera->setNearClipDistance(20);
-
 	m_controller = new SkyX::BasicController();
 	m_controller->setMoonPhase(0.75f);
 
@@ -55,6 +52,12 @@ void SkyXTerrainSample::createScene()
 	mWindow->addListener(m_skyX);
 
 	m_skyX->getCloudsManager()->add(SkyX::CloudLayer::Options());
+
+	Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("ninja.mesh");
+	ninjaEntity->setCastShadows(true);
+	Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("Node2");
+	node->attachObject(ninjaEntity);
+	node->setPosition(Ogre::Vector3(1883, 100, 2116));
 }
 
 void SkyXTerrainSample::createFrameListener()
@@ -74,6 +77,9 @@ bool SkyXTerrainSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 	}
 
 	m_skyX->setTimeMultiplier(0.1f);
+
+	//mLight->setDirection(-m_controller->getSunDirection());
+	//mTerrainGlobals->setLightMapDirection(mLight->getDerivedDirection());
 
 	SkyX::AtmosphereManager::Options options = m_skyX->getAtmosphereManager()->getOptions();
 

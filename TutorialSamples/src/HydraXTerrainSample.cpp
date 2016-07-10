@@ -1,5 +1,6 @@
 #include "HydraXTerrainSample.h"
 #include "Modules/ProjectedGrid/ProjectedGrid.h"
+#include "Modules/SimpleGrid/SimpleGrid.h"
 
 HydraXTerrainSample::HydraXTerrainSample()
 {
@@ -24,12 +25,14 @@ void HydraXTerrainSample::createScene()
 		Hydrax::MaterialManager::NM_VERTEX,  // режим карты нормалей
 		Hydrax::Module::ProjectedGrid::Options());  // опции сетки
 
+	Hydrax::Module::SimpleGrid::Options options;
+	options.MeshSize = Hydrax::Size(5000);
+	Hydrax::Module::SimpleGrid* mModule2 = new Hydrax::Module::SimpleGrid(m_hydraX, new Hydrax::Noise::Perlin(), Hydrax::MaterialManager::NM_VERTEX, options);
+
 	m_hydraX->setModule(mModule);
 	m_hydraX->loadCfg("HydraxDemo.hdx");
 	m_hydraX->create();
-	m_hydraX->getMaterialManager()->addDepthTechnique(
-		mTerrainGroup->getTerrain(0, 0)->getMaterial()->createTechnique());
-	mCamera->setFarClipDistance(1000000);
+	m_hydraX->getMaterialManager()->addDepthTechnique(mTerrainGroup->getTerrain(0, 0)->getMaterial()->createTechnique());
 }
 
 void HydraXTerrainSample::createFrameListener()

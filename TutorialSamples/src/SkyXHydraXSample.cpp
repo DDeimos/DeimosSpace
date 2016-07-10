@@ -22,8 +22,6 @@ void SkyXHydraXSample::createScene()
 {
 	TerrainSample::createScene();
 
-	mCamera->setFarClipDistance(30000);
-
 	m_controller = new SkyX::BasicController();
 	m_controller->setMoonPhase(0.75f);
 
@@ -49,6 +47,11 @@ void SkyXHydraXSample::createScene()
 	m_hydraX->create();
 	m_hydraX->getMaterialManager()->addDepthTechnique(mTerrainGroup->getTerrain(0, 0)->getMaterial()->createTechnique());
 	m_origWaterColor = m_hydraX->getWaterColor();
+
+	Ogre::Entity* ninjaEntity = mSceneMgr->createEntity("ninja.mesh");
+	Ogre::SceneNode* ninjaNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("NinjaNode");
+	ninjaNode->attachObject(ninjaEntity); 
+	ninjaNode->setPosition(Ogre::Vector3(2000, 0, 1800));
 }
 
 void SkyXHydraXSample::createFrameListener()
@@ -63,8 +66,12 @@ bool SkyXHydraXSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 		return false;
 	}
 
-	m_skyX->setTimeMultiplier(0.2f);
+	m_skyX->setTimeMultiplier(0.0f);
 
+	if (mKeyboard->isKeyDown(OIS::KC_1))
+		m_skyX->setTimeMultiplier(0.5f);
+	if (mKeyboard->isKeyDown(OIS::KC_2))
+		m_skyX->setTimeMultiplier(-0.5f);
 
 	Ogre::Vector3 cameraPos = mCamera->getDerivedPosition();
 	Ogre::Vector3 sunDir = m_controller->getSunDirection();
@@ -81,7 +88,7 @@ bool SkyXHydraXSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 	float height = m_hydraX->getSunPosition().y / 10.0f;
 
 	Hydrax::HydraxComponent c = m_hydraX->getComponents();
-	/*if(height < 0)
+	if(height < 0)
 	{
 		if(m_hydraX->isComponent(Hydrax::HYDRAX_COMPONENT_CAUSTICS))
 			m_hydraX->setComponents(Hydrax::HydraxComponent(c ^ Hydrax::HYDRAX_COMPONENT_CAUSTICS));
@@ -89,7 +96,7 @@ bool SkyXHydraXSample::frameRenderingQueued(const Ogre::FrameEvent& fe)
 	{
 		if(!m_hydraX->isComponent(Hydrax::HYDRAX_COMPONENT_CAUSTICS))
 			m_hydraX->setComponents(Hydrax::HydraxComponent(c | Hydrax::HYDRAX_COMPONENT_CAUSTICS));
-	}*/
+	}
 
 	/*if(height < -99.0f)
 	{
