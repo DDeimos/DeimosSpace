@@ -95,6 +95,7 @@
     <ClCompile Include="..\src\Samples.cpp" />
     <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
     <ClCompile Include="..\src\SkyXTerrainSample.cpp" />
+    <ClCompile Include="..\src\SkyXWeatherSample.cpp" />
     <ClCompile Include="..\src\TerrainSample.cpp" />
     <ClCompile Include="..\src\LightSample.cpp" />
   </ItemGroup>
@@ -110,6 +111,7 @@
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\SkyXHydraXSample.h" />
     <ClInclude Include="..\src\SkyXTerrainSample.h" />
+    <ClInclude Include="..\src\SkyXWeatherSample.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
     <ClInclude Include="..\src\LightSample.h" />
     <ClInclude Include="..\src\utils.h" />

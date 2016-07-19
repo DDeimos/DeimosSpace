@@ -12,6 +12,7 @@
 #include "MyGUISample.h"
 #include "MultiSelectSample.h"
 #include "SkyXTerrainSample.h"
+#include "SkyXWeatherSample.h"
 #include "HydraXTerrainSample.h"
 #include "SkyXHydraXSample.h"
 

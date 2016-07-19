@@ -57,6 +57,9 @@
     <ClCompile Include="..\src\SkyXHydraXSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SkyXWeatherSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\BaseApplication.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SkyXHydraXSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SkyXWeatherSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
