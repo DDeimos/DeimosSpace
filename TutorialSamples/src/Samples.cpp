@@ -36,6 +36,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new HydraXTerrainSample();
 	else if(startSample == "SkyXHydraXSample") 
 		return new SkyXHydraXSample();
+	else if(startSample == "OgreSkyWaterSample") 
+		return new OgreSkyWaterSample();
 
 	return 0;
 }

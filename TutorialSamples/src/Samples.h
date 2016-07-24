@@ -15,6 +15,7 @@
 #include "SkyXWeatherSample.h"
 #include "HydraXTerrainSample.h"
 #include "SkyXHydraXSample.h"
+#include "OgreSkyWaterSample.h"
 
 using namespace std;
 
