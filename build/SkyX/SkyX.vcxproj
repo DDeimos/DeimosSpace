@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}</ProjectGuid>
+    <RootNamespace>SkyX</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SKYX_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../src/SkyX;../../../OgreEngine/include/OGRE;../../../OgreEngine/boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\..\..\OgreEngine\lib\debug\OgreMain_d.lib;..\..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\SkyX\AtmosphereManager.h" />
+    <ClInclude Include="..\..\src\SkyX\BasicController.h" />
+    <ClInclude Include="..\..\src\SkyX\CloudsManager.h" />
+    <ClInclude Include="..\..\src\SkyX\ColorGradient.h" />
+    <ClInclude Include="..\..\src\SkyX\Controller.h" />
+    <ClInclude Include="..\..\src\SkyX\GPUManager.h" />
+    <ClInclude Include="..\..\src\SkyX\MeshManager.h" />
+    <ClInclude Include="..\..\src\SkyX\MoonManager.h" />
+    <ClInclude Include="..\..\src\SkyX\Prerequisites.h" />
+    <ClInclude Include="..\..\src\SkyX\SkyX.h" />
+    <ClInclude Include="..\..\src\SkyX\VCloudsManager.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\DataManager.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\Ellipsoid.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\FastFakeRandom.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\GeometryBlock.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\GeometryManager.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\Lightning.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\LightningManager.h" />
+    <ClInclude Include="..\..\src\SkyX\VClouds\VClouds.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\SkyX\AtmosphereManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\BasicController.cpp" />
+    <ClCompile Include="..\..\src\SkyX\CloudsManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\ColorGradient.cpp" />
+    <ClCompile Include="..\..\src\SkyX\GPUManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\MeshManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\MoonManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\Prerequisites.cpp" />
+    <ClCompile Include="..\..\src\SkyX\SkyX.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VCloudsManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\DataManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\Ellipsoid.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\FastFakeRandom.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\GeometryBlock.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\GeometryManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\Lightning.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\LightningManager.cpp" />
+    <ClCompile Include="..\..\src\SkyX\VClouds\VClouds.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
