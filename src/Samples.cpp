@@ -24,8 +24,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new MultiMgrSample();
 	else if(startSample == "EntitySelectSample") 
 		return new EntitySelectSample();
-	else if(startSample == "MyGUISample") 
-		return new MyGUISample();
+	//else if(startSample == "MyGUISample") 
+		//return new MyGUISample();
 	else if(startSample == "MultiSelectSample") 
 		return new MultiSelectSample();
 	else if(startSample == "SkyXTerrainSample") 
@@ -45,7 +45,11 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 void CSamples::Load()
 {
 	Ogre::ConfigFile cf;
+#ifdef _DEBUG
+	cf.load("samples_d.cfg");
+#else
 	cf.load("samples.cfg");
+#endif
 
 	Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
 	Ogre::String secName, typeName, archName;
