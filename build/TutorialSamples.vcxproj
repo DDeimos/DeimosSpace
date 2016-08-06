@@ -11,24 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C35F216B-95FC-4A0A-80AB-10261C0489AA}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{9B974831-5E66-404D-90A6-58C53025B130}</ProjectGuid>
     <RootNamespace>TutorialSamples</RootNamespace>
-    <ProjectName>TutorialSamples</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -41,82 +39,80 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\</OutDir>
+    <OutDir>..\bin\debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin\debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../OgreEngine/boost;../../OgreEngine/include/OGRE;../../OgreEngine/include;../../OgreEngine/include/OIS;../../OgreEngine/include/OGRE/Overlay;../../OgreEngine/include/MyGUI;../../OgreEngine/include/MyGUI/Platforms;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\OgreEngine\lib\debug\OgreMain_d.lib;..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;..\..\OgreEngine\lib\debug\OgreOverlay_d.lib;..\..\OgreEngine\lib\debug\OIS_d.lib;..\..\OgreEngine\lib\debug\OgreTerrain_d.lib;..\..\OgreEngine\lib\debug\MyGUIEngine_d.lib;..\..\OgreEngine\lib\debug\MyGUI.OgrePlatform_d.lib;..\bin\SkyX.lib;..\bin\HydraX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" copy /Y "$(TargetDir)terrain_00000000.dat" "$(TargetDir)../../DataFiles/terrain_00000000.dat"</Command>
+      <Command>IF EXIST "$(TargetDir)debug/terrain_00000000.dat" copy /Y "$(TargetDir)debug/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_RELEASE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(TargetDir)release/terrain_00000000.dat" copy /Y "$(TargetDir)release/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\EntitySelectSample.cpp" />
-    <ClCompile Include="..\src\HydraXTerrainSample.cpp" />
-    <ClCompile Include="..\src\MultiMgrSample.cpp" />
-    <ClCompile Include="..\src\MultiSelectSample.cpp" />
-    <ClCompile Include="..\src\MyGUISample.cpp" />
-    <ClCompile Include="..\src\InputBufferSample.cpp" />
-    <ClCompile Include="..\src\InputSample.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\BaseApplication.cpp" />
-    <ClCompile Include="..\src\OgreSkyWaterSample.cpp" />
-    <ClCompile Include="..\src\Samples.cpp" />
-    <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
-    <ClCompile Include="..\src\SkyXTerrainSample.cpp" />
-    <ClCompile Include="..\src\SkyXWeatherSample.cpp" />
-    <ClCompile Include="..\src\TerrainSample.cpp" />
-    <ClCompile Include="..\src\LightSample.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="..\src\BaseApplication.h" />
     <ClInclude Include="..\src\EntitySelectSample.h" />
     <ClInclude Include="..\src\HydraXTerrainSample.h" />
+    <ClInclude Include="..\src\InputBufferSample.h" />
+    <ClInclude Include="..\src\InputSample.h" />
+    <ClInclude Include="..\src\LightSample.h" />
     <ClInclude Include="..\src\MultiMgrSample.h" />
     <ClInclude Include="..\src\MultiSelectSample.h" />
     <ClInclude Include="..\src\MyGUISample.h" />
-    <ClInclude Include="..\src\InputBufferSample.h" />
-    <ClInclude Include="..\src\InputSample.h" />
-    <ClInclude Include="..\src\BaseApplication.h" />
     <ClInclude Include="..\src\OgreSkyWaterSample.h" />
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\SkyXHydraXSample.h" />
     <ClInclude Include="..\src\SkyXTerrainSample.h" />
     <ClInclude Include="..\src\SkyXWeatherSample.h" />
     <ClInclude Include="..\src\TerrainSample.h" />
-    <ClInclude Include="..\src\LightSample.h" />
     <ClInclude Include="..\src\utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\BaseApplication.cpp" />
+    <ClCompile Include="..\src\EntitySelectSample.cpp" />
+    <ClCompile Include="..\src\HydraXTerrainSample.cpp" />
+    <ClCompile Include="..\src\InputBufferSample.cpp" />
+    <ClCompile Include="..\src\InputSample.cpp" />
+    <ClCompile Include="..\src\LightSample.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\MultiMgrSample.cpp" />
+    <ClCompile Include="..\src\MultiSelectSample.cpp" />
+    <ClCompile Include="..\src\MyGUISample.cpp" />
+    <ClCompile Include="..\src\OgreSkyWaterSample.cpp" />
+    <ClCompile Include="..\src\Samples.cpp" />
+    <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
+    <ClCompile Include="..\src\SkyXTerrainSample.cpp" />
+    <ClCompile Include="..\src\SkyXWeatherSample.cpp" />
+    <ClCompile Include="..\src\TerrainSample.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

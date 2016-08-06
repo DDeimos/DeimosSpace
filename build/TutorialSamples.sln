@@ -1,11 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TutorialSamples", "TutorialSamples.vcxproj", "{C35F216B-95FC-4A0A-80AB-10261C0489AA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8} = {DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}
-		{AC23E07F-E007-49B4-96B0-AEA8C42BE4AD} = {AC23E07F-E007-49B4-96B0-AEA8C42BE4AD}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TutorialSamples", "TutorialSamples.vcxproj", "{9B974831-5E66-404D-90A6-58C53025B130}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkyX", "SkyX\SkyX.vcxproj", "{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}"
 EndProject
@@ -17,10 +13,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Debug|Win32.Build.0 = Debug|Win32
-		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Release|Win32.ActiveCfg = Release|Win32
-		{C35F216B-95FC-4A0A-80AB-10261C0489AA}.Release|Win32.Build.0 = Release|Win32
+		{9B974831-5E66-404D-90A6-58C53025B130}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B974831-5E66-404D-90A6-58C53025B130}.Debug|Win32.Build.0 = Debug|Win32
+		{9B974831-5E66-404D-90A6-58C53025B130}.Release|Win32.ActiveCfg = Release|Win32
+		{9B974831-5E66-404D-90A6-58C53025B130}.Release|Win32.Build.0 = Release|Win32
 		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Debug|Win32.ActiveCfg = Debug|Win32
 		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Debug|Win32.Build.0 = Debug|Win32
 		{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}.Release|Win32.ActiveCfg = Release|Win32

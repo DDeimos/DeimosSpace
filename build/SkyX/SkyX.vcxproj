@@ -22,7 +22,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -39,18 +39,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\..\bin\</OutDir>
+    <OutDir>..\..\bin\debug\</OutDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\bin\release\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>SKYX_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../src/SkyX;../../../OgreEngine/include/OGRE;../../../OgreEngine/boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../src/SkyX;../../include/OGRE;../../../Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\..\OgreEngine\lib\debug\OgreMain_d.lib;..\..\..\OgreEngine\boost\lib\libboost_thread-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_date_time-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_system-vc110-mt-gd-1_55.lib;..\..\..\OgreEngine\boost\lib\libboost_chrono-vc110-mt-gd-1_55.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\lib\debug\OgreMain_d.lib;..\..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -59,11 +63,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../src/SkyX;../../include/OGRE;../../../Boost;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKYX_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\..\lib\release\OgreMain.lib;..\..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
