@@ -137,7 +137,8 @@ bool MultiSelectSample::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButto
 {
 	if (id == OIS::MB_Left)
 	{
-		m_start = mTrayMgr->getCursorPos();
+		//TODO getCursorPos
+		//m_start = mTrayMgr->getCursorPos();
 		m_stop = m_start;
 
 		m_selecting = true;
@@ -162,7 +163,8 @@ bool MultiSelectSample::mouseMoved(const OIS::MouseEvent &arg)
 	{
 		if (m_selecting)
 		{
-			m_stop = mTrayMgr->getCursorPos();
+			//TODO getCursorPos
+			//m_stop = mTrayMgr->getCursorPos();
 			m_selectionBox->setCorners(m_start, m_stop);
 		}
 	}

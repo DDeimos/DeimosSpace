@@ -228,13 +228,14 @@ bool EntitySelectSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseBut
 
 		if (creature)
 		{
-			Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
+			//TODO getCursorPos
+			/*Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
 			Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
 			if (result.terrain)
 			{
 				creature->SetTarget(result.position);
-			}
+			}*/
 		}
 	}
 
@@ -296,13 +297,14 @@ void EntitySelectSample::MoveNodeUnderCursor()
 
 	if (creature)
 	{
-		Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
+		//TODO getCursorPos
+		/*Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
 		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
 
 		if (result.terrain)
 		{
 			creature->GetNode()->setPosition(result.position);
-		}
+		}*/
 	}
 }
 
