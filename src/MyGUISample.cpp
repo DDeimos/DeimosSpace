@@ -1,4 +1,4 @@
-#include "MyGUISample.h"
+/*#include "MyGUISample.h"
 #include "utils.h"
 
 MyGUISample::MyGUISample()
@@ -142,3 +142,4 @@ bool MyGUISample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID i
 
 	return true;
 }
+*/

@@ -1,6 +1,6 @@
 #ifndef MYGUI_SAMPLE_H
 #define MYGUI_SAMPLE_H
-
+/*
 #include "TerrainSample.h"
 #include "MyGUI.h"
 #include "MyGUI_OgrePlatform.h"
@@ -31,5 +31,5 @@ private:
 	int mNodeCount;
 	bool mLMouseDown, mRMouseDown;
 };
-
+*/
 #endif
