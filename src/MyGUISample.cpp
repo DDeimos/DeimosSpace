@@ -27,6 +27,8 @@ void MyGUISample::createScene()
 	mGui = new MyGUI::Gui();
 	mGui->initialise();
 
+	MyGUI::ResourceManager::getInstance().load("MyGUI_BlackBlueTheme.xml");
+
 	InitMeshesList();
 }
 
