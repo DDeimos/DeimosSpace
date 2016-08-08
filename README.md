@@ -9,10 +9,12 @@ HydraX - https://bitbucket.org/ogreaddons/hydrax
 MyGUI - https://github.com/MyGUI/mygui  
   
 # Environments:  
-OGRE_HOME  
-OGRE_DEPENDENCIES_DIR  
-BOOST_ROOT  
-MYGUI_DEPENDENCIES_DIR  
-OGRE_SOURCE_DIR  
+OGRE_HOME - project path  
+OGRE_DEPENDENCIES_DIR - project path  
+BOOST_ROOT - boost path  
+MYGUI_DEPENDENCIES_DIR - project path  
+OGRE_SOURCE_DIR - project path (in CMake)  
   
-All externals should be in the same folder as project.
+All externals should be in the same folder as project.  
+In CMake field CMAKE_INSTALL_PREFIX should be changed to the project path.  
+In CMake building of any samples should be disabled.  
