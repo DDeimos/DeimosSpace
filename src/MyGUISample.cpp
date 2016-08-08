@@ -1,4 +1,4 @@
-/*#include "MyGUISample.h"
+#include "MyGUISample.h"
 #include "utils.h"
 
 MyGUISample::MyGUISample()
@@ -33,7 +33,7 @@ void MyGUISample::createScene()
 void MyGUISample::InitMeshesList()
 {
 	mMeshesList = mGui->createWidget<MyGUI::ListBox>("ListBox", 5, 5, 120, 590, MyGUI::Align::Default, "Main");
-	auto files = Directory::GetFiles("../../DataFiles/models/", "*.mesh");
+	auto files = Directory::GetFiles("../../media/models/", "*.mesh");
 
 	for (std::string file : files)
 	{
@@ -142,4 +142,3 @@ bool MyGUISample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID i
 
 	return true;
 }
-*/

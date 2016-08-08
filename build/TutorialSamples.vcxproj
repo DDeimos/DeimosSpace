@@ -48,12 +48,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\lib\debug\MyGUI.OgrePlatform_d.lib;..\lib\debug\MyGUIEngine_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST "$(TargetDir)debug/terrain_00000000.dat" copy /Y "$(TargetDir)debug/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
@@ -65,14 +65,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_RELEASE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\lib\release\MyGUI.OgrePlatform.lib;..\lib\release\MyGUIEngine.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>IF EXIST "$(TargetDir)release/terrain_00000000.dat" copy /Y "$(TargetDir)release/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
