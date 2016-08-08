@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MyGUI type="Resource" version="1.1">
+	<Resource type="ResourceLayout" name="LE_PanelEmpty" version="3.2.0">
+		<Widget type="Widget" skin="WhiteRectSkin2" position="0 0 16 16" name="Root">
+			<Property key="Colour" value="0 1 0"/>
+		</Widget>
+	</Resource>
+	<Resource type="ResourceLayout" name="LE_TextBox" version="3.2.0">
+		<Widget type="Widget" skin="TextBoxSkin" position="0 0 16 16" name="Root">
+			<Property key="FontName" value="Default"/>
+			<Property key="TextAlign" value="Default"/>
+			<Widget type="Widget" skin="WhiteRectSkin1" position="0 0 16 16" align="Stretch">
+				<Property key="Colour" value="1 1 0"/>
+			</Widget>
+		</Widget>
+	</Resource>
+	<Resource type="ResourceLayout" name="LE_ImageBox" version="3.2.0">
+		<Widget type="Widget" skin="ImageBox" position="0 0 16 16" name="Root">
+			<Widget type="Widget" skin="WhiteRectSkin1" position="0 0 16 16" align="Stretch">
+				<Property key="Colour" value="0 0 1"/>
+			</Widget>
+		</Widget>
+	</Resource>
+	<Resource type="ResourceLayout" name="LE_ItemBoxEmpty" version="3.2.0">
+		<Widget type="Widget" skin="ItemBoxEmpty" position="0 0 16 16" name="Root">
+			<Widget type="Widget" skin="WhiteRectSkin1" position="0 0 16 16" align="Stretch">
+				<Property key="Colour" value="0 1 1"/>
+			</Widget>
+		</Widget>
+	</Resource>
+</MyGUI>
