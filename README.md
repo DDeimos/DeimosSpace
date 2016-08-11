@@ -21,3 +21,4 @@ PHYSX_DIR - physx path (to PhysX SDK)
 All externals should be in the same folder as project.  
 In CMake field CMAKE_INSTALL_PREFIX should be changed to the project path.  
 In CMake building of any samples should be disabled.  
+In PhysX solution set "Runtime Library" (in Code Generation) to "Multi-Threaded DLL" for all projects.  
