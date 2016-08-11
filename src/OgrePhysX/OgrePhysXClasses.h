@@ -26,7 +26,11 @@ THE SOFTWARE.
 	#define WIN32
 #endif
 
-#define OgrePhysXClass __declspec(dllexport)
+#ifdef OGRE_PHYSX_LIB
+#define OgrePhysXClass __declspec (dllexport)
+#else
+#define OgrePhysXClass __declspec (dllimport)
+#endif
 
 #define OGREPHYSX_CANMOVESTATICACTORS 1
 

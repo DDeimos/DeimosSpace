@@ -48,15 +48,21 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;../src/OgrePhysX;$(PHYSX_DIR)\Include;$(PHYSX_DIR)\Include\foundation;$(PHYSX_DIR)\Include\extensions;$(PHYSX_DIR)\Include\geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\lib\debug\MyGUI.OgrePlatform_d.lib;..\lib\debug\MyGUIEngine_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\lib\debug\MyGUI.OgrePlatform_d.lib;..\lib\debug\MyGUIEngine_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;..\bin\debug\OgrePhysX_d.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3DEBUG_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3CommonDEBUG_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3CookingDEBUG_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3ExtensionsDEBUG.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)../../media/terrain_00000000.dat" /Y /D</Command>
+      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3DEBUG_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CommonDEBUG_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CookingDEBUG_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -69,17 +75,21 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_RELEASE;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../Boost;../include;../include/OIS;../include/OGRE;../include/OGRE/Overlay;../include/MYGUI;../src/SkyX;../src/HydraX;../src/OgrePhysX;$(PHYSX_DIR)\Include;$(PHYSX_DIR)\Include\foundation;$(PHYSX_DIR)\Include\extensions;$(PHYSX_DIR)\Include\geometry;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_RELEASE;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\lib\release\MyGUI.OgrePlatform.lib;..\lib\release\MyGUIEngine.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\lib\release\MyGUI.OgrePlatform.lib;..\lib\release\MyGUIEngine.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;..\bin\release\OgrePhysX.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Common_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Cooking_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Extensions.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(TargetDir)release/terrain_00000000.dat" copy /Y "$(TargetDir)release/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
+      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Common_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Cooking_x86.*" "$(TargetDir)" /y /d
+xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -92,6 +102,7 @@
     <ClInclude Include="..\src\MultiMgrSample.h" />
     <ClInclude Include="..\src\MultiSelectSample.h" />
     <ClInclude Include="..\src\MyGUISample.h" />
+    <ClInclude Include="..\src\OgrePhysXSample.h" />
     <ClInclude Include="..\src\OgreSkyWaterSample.h" />
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\SkyXHydraXSample.h" />
@@ -111,6 +122,7 @@
     <ClCompile Include="..\src\MultiMgrSample.cpp" />
     <ClCompile Include="..\src\MultiSelectSample.cpp" />
     <ClCompile Include="..\src\MyGUISample.cpp" />
+    <ClCompile Include="..\src\OgrePhysXSample.cpp" />
     <ClCompile Include="..\src\OgreSkyWaterSample.cpp" />
     <ClCompile Include="..\src\Samples.cpp" />
     <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
