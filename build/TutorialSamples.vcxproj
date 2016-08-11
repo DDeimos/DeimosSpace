@@ -58,11 +58,11 @@
       </AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3DEBUG_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CommonDEBUG_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CookingDEBUG_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
+      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3DEBUG_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3DEBUG_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CommonDEBUG_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CommonDEBUG_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CookingDEBUG_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3CookingDEBUG_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
@@ -85,11 +85,11 @@ xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Comman
       <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-1_61.lib;..\lib\release\OIS.lib;..\lib\release\OgreMain.lib;..\lib\release\OgreOverlay.lib;..\lib\release\OgreTerrain.lib;..\lib\release\MyGUI.OgrePlatform.lib;..\lib\release\MyGUIEngine.lib;..\bin\release\SkyX.lib;..\bin\release\HydraX.lib;..\bin\release\OgrePhysX.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Common_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Cooking_x86.lib;$(PHYSX_DIR)\Lib\vc11win32\PhysX3Extensions.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Common_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Cooking_x86.*" "$(TargetDir)" /y /d
-xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
+      <Command>IF EXIST "$(TargetDir)terrain_00000000.dat" xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)..\..\media\" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Common_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Common_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Cooking_x86.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\PhysX3Cooking_x86.*" "$(TargetDir)" /y /d
+IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" xcopy "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" "$(TargetDir)" /y /d</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
