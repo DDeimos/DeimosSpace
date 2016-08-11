@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mesh_fragments>
+	<mesh name="meteor_0.mesh" material="rock">
+	</mesh>
+	<mesh name="meteor_1.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="1.12999"/>
+			<rel_torque value="1.2012"/>
+			<joint_center x="0.309111" y="0.178971" z="0.371895"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_2.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="0.806746"/>
+			<rel_torque value="0.724611"/>
+			<joint_center x="0.384022" y="0.509984" z="0.391734"/>
+		</connection>
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.901935"/>
+			<rel_torque value="0.856569"/>
+			<joint_center x="0.13198" y="0.373236" z="0.447448"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_3.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.31832"/>
+			<rel_torque value="0.179595"/>
+			<joint_center x="0.0664682" y="0.291579" z="0.0722867"/>
+		</connection>
+		<connection target="meteor_2.mesh" material="rock">
+			<rel_force value="0.571931"/>
+			<rel_torque value="0.432529"/>
+			<joint_center x="0.0103329" y="0.674425" z="0.277277"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_4.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="0.523785"/>
+			<rel_torque value="0.379079"/>
+			<joint_center x="0.56709" y="0.448525" z="0.11774"/>
+		</connection>
+		<connection target="meteor_2.mesh" material="rock">
+			<rel_force value="0.0933084"/>
+			<rel_torque value="0.0285024"/>
+			<joint_center x="0.440525" y="0.760047" z="0.150863"/>
+		</connection>
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0.892141"/>
+			<rel_torque value="0.842656"/>
+			<joint_center x="0.269603" y="0.528641" z="0.0616974"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_5.mesh" material="rock">
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0.734109"/>
+			<rel_torque value="0.628985"/>
+			<joint_center x="-0.0893016" y="0.51159" z="-0.158689"/>
+		</connection>
+		<connection target="meteor_4.mesh" material="rock">
+			<rel_force value="0.188201"/>
+			<rel_torque value="0.0816457"/>
+			<joint_center x="0.159725" y="0.691657" z="-0.114701"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_6.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="0.031329"/>
+			<rel_torque value="0.00554524"/>
+			<joint_center x="0.427453" y="0.126606" z="-0.00657551"/>
+		</connection>
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.0364326"/>
+			<rel_torque value="0.00695401"/>
+			<joint_center x="0.210967" y="0.105437" z="-0.0700811"/>
+		</connection>
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0.208792"/>
+			<rel_torque value="0.0954048"/>
+			<joint_center x="0.235986" y="0.207808" z="-0.0536814"/>
+		</connection>
+		<connection target="meteor_4.mesh" material="rock">
+			<rel_force value="1.13983"/>
+			<rel_torque value="1.21692"/>
+			<joint_center x="0.452831" y="0.505925" z="-0.151196"/>
+		</connection>
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="1.19424"/>
+			<rel_torque value="1.30508"/>
+			<joint_center x="0.167766" y="0.507845" z="-0.369779"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_7.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.880611"/>
+			<rel_torque value="0.826373"/>
+			<joint_center x="-0.162608" y="0.00166532" z="0.415965"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_8.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.507808"/>
+			<rel_torque value="0.361867"/>
+			<joint_center x="-0.0763604" y="0.230436" z="0.544595"/>
+		</connection>
+		<connection target="meteor_2.mesh" material="rock">
+			<rel_force value="0.471413"/>
+			<rel_torque value="0.32367"/>
+			<joint_center x="-0.194293" y="0.671367" z="0.428878"/>
+		</connection>
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="1.73746e-006"/>
+			<rel_torque value="2.2902e-009"/>
+			<joint_center x="-0.233912" y="0.866941" z="0.0766348"/>
+		</connection>
+		<connection target="meteor_7.mesh" material="rock">
+			<rel_force value="1.69627"/>
+			<rel_torque value="2.20923"/>
+			<joint_center x="-0.404106" y="0.219331" z="0.333402"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_9.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="8.60536e-005"/>
+			<rel_torque value="7.98277e-007"/>
+			<joint_center x="-0.0789752" y="0.0266732" z="0.0287203"/>
+		</connection>
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0.0190091"/>
+			<rel_torque value="0.00262085"/>
+			<joint_center x="-0.053169" y="0.161483" z="-0.117184"/>
+		</connection>
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="0.366472"/>
+			<rel_torque value="0.221851"/>
+			<joint_center x="-0.224828" y="0.274325" z="-0.529555"/>
+		</connection>
+		<connection target="meteor_7.mesh" material="rock">
+			<rel_force value="0.771631"/>
+			<rel_torque value="0.677821"/>
+			<joint_center x="-0.423928" y="-0.0415657" z="-0.0347417"/>
+		</connection>
+		<connection target="meteor_8.mesh" material="rock">
+			<rel_force value="0.161569"/>
+			<rel_torque value="0.0649437"/>
+			<joint_center x="-0.390906" y="0.367168" z="0.0586054"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_10.mesh" material="rock">
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="0.642837"/>
+			<rel_torque value="0.515409"/>
+			<joint_center x="-0.24764" y="0.612373" z="-0.478434"/>
+		</connection>
+		<connection target="meteor_9.mesh" material="rock">
+			<rel_force value="0.836659"/>
+			<rel_torque value="0.765284"/>
+			<joint_center x="-0.429659" y="0.238881" z="-0.539704"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_11.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0"/>
+			<rel_torque value="0"/>
+			<joint_center x="0.0424924" y="0.215387" z="0.231316"/>
+		</connection>
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0.685223"/>
+			<rel_torque value="0.567215"/>
+			<joint_center x="-0.121031" y="0.543603" z="0.0556402"/>
+		</connection>
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="0"/>
+			<rel_torque value="0"/>
+			<joint_center x="-0.244347" y="0.792464" z="-0.120035"/>
+		</connection>
+		<connection target="meteor_7.mesh" material="rock">
+			<rel_force value="0.949163"/>
+			<rel_torque value="0.924722"/>
+			<joint_center x="-0.386507" y="0.157028" z="0.0320402"/>
+		</connection>
+		<connection target="meteor_8.mesh" material="rock">
+			<rel_force value="1.06531"/>
+			<rel_torque value="1.09954"/>
+			<joint_center x="-0.394466" y="0.584189" z="0.0583325"/>
+		</connection>
+		<connection target="meteor_9.mesh" material="rock">
+			<rel_force value="1.18707"/>
+			<rel_torque value="1.29334"/>
+			<joint_center x="-0.396571" y="0.269291" z="-0.0850736"/>
+		</connection>
+		<connection target="meteor_10.mesh" material="rock">
+			<rel_force value="1.22554"/>
+			<rel_torque value="1.35672"/>
+			<joint_center x="-0.438448" y="0.443893" z="-0.247235"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_12.mesh" material="rock">
+	</mesh>
+	<mesh name="meteor_13.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="1.00447"/>
+			<rel_torque value="1.00671"/>
+			<joint_center x="0.504102" y="0.211914" z="0.456692"/>
+		</connection>
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.0515755"/>
+			<rel_torque value="0.0117129"/>
+			<joint_center x="0.213866" y="0.0462016" z="0.419144"/>
+		</connection>
+		<connection target="meteor_12.mesh" material="rock">
+			<rel_force value="1.43178"/>
+			<rel_torque value="1.71323"/>
+			<joint_center x="0.447514" y="-0.176196" z="0.32664"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_14.mesh" material="rock">
+		<connection target="meteor_12.mesh" material="rock">
+			<rel_force value="1.01063"/>
+			<rel_torque value="1.01599"/>
+			<joint_center x="0.409107" y="-0.460492" z="0.0278761"/>
+		</connection>
+		<connection target="meteor_13.mesh" material="rock">
+			<rel_force value="0.000858612"/>
+			<rel_torque value="2.51591e-005"/>
+			<joint_center x="0.805037" y="-0.222534" z="0.11396"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_15.mesh" material="rock">
+		<connection target="meteor_4.mesh" material="rock">
+			<rel_force value="0.0292442"/>
+			<rel_torque value="0.00500102"/>
+			<joint_center x="0.781984" y="0.374245" z="-0.253756"/>
+		</connection>
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="0.2852"/>
+			<rel_torque value="0.152309"/>
+			<joint_center x="0.0775908" y="0.305843" z="-0.542559"/>
+		</connection>
+		<connection target="meteor_6.mesh" material="rock">
+			<rel_force value="0.656065"/>
+			<rel_torque value="0.531398"/>
+			<joint_center x="0.470328" y="0.258033" z="-0.532128"/>
+		</connection>
+		<connection target="meteor_14.mesh" material="rock">
+			<rel_force value="0.812522"/>
+			<rel_torque value="0.732407"/>
+			<joint_center x="0.263808" y="-0.215569" z="-0.583909"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_16.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="0.0730363"/>
+			<rel_torque value="0.0197382"/>
+			<joint_center x="0.715005" y="0.382349" z="0.093293"/>
+		</connection>
+		<connection target="meteor_4.mesh" material="rock">
+			<rel_force value="0.0013625"/>
+			<rel_torque value="5.02929e-005"/>
+			<joint_center x="0.784376" y="0.382144" z="-0.102798"/>
+		</connection>
+		<connection target="meteor_6.mesh" material="rock">
+			<rel_force value="0.202968"/>
+			<rel_torque value="0.0914413"/>
+			<joint_center x="0.418759" y="0.108223" z="-0.119898"/>
+		</connection>
+		<connection target="meteor_13.mesh" material="rock">
+			<rel_force value="1.09166"/>
+			<rel_torque value="1.1406"/>
+			<joint_center x="0.457652" y="0.125874" z="0.0746352"/>
+		</connection>
+		<connection target="meteor_14.mesh" material="rock">
+			<rel_force value="1.06128"/>
+			<rel_torque value="1.09331"/>
+			<joint_center x="0.431447" y="-0.234216" z="-0.110876"/>
+		</connection>
+		<connection target="meteor_15.mesh" material="rock">
+			<rel_force value="1.45977"/>
+			<rel_torque value="1.76371"/>
+			<joint_center x="0.47666" y="-0.0223717" z="-0.300749"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_17.mesh" material="rock">
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.00182022"/>
+			<rel_torque value="7.76581e-005"/>
+			<joint_center x="-0.0157391" y="-0.176864" z="0.776232"/>
+		</connection>
+		<connection target="meteor_7.mesh" material="rock">
+			<rel_force value="1.33928"/>
+			<rel_torque value="1.54991"/>
+			<joint_center x="-0.472159" y="-0.227257" z="0.341145"/>
+		</connection>
+		<connection target="meteor_9.mesh" material="rock">
+			<rel_force value="0.00116152"/>
+			<rel_torque value="3.9586e-005"/>
+			<joint_center x="-0.756997" y="-0.222508" z="-0.193414"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_18.mesh" material="rock">
+		<connection target="meteor_0.mesh" material="rock">
+			<rel_force value="0.000937033"/>
+			<rel_torque value="2.86835e-005"/>
+			<joint_center x="0.26636" y="-0.0379708" z="0.782009"/>
+		</connection>
+		<connection target="meteor_1.mesh" material="rock">
+			<rel_force value="0.741931"/>
+			<rel_torque value="0.639066"/>
+			<joint_center x="-0.00149073" y="-0.0611781" z="0.438839"/>
+		</connection>
+		<connection target="meteor_9.mesh" material="rock">
+			<rel_force value="0"/>
+			<rel_torque value="0"/>
+			<joint_center x="-0.443887" y="0.0313511" z="-0.119898"/>
+		</connection>
+		<connection target="meteor_12.mesh" material="rock">
+			<rel_force value="0.906029"/>
+			<rel_torque value="0.862409"/>
+			<joint_center x="0.286988" y="-0.432189" z="0.416704"/>
+		</connection>
+		<connection target="meteor_13.mesh" material="rock">
+			<rel_force value="0.733135"/>
+			<rel_torque value="0.627735"/>
+			<joint_center x="0.227098" y="-0.0157039" z="0.405391"/>
+		</connection>
+		<connection target="meteor_14.mesh" material="rock">
+			<rel_force value="0.33818"/>
+			<rel_torque value="0.196662"/>
+			<joint_center x="0.0799486" y="-0.551501" z="-0.0643821"/>
+		</connection>
+		<connection target="meteor_17.mesh" material="rock">
+			<rel_force value="2.02803"/>
+			<rel_torque value="2.88809"/>
+			<joint_center x="-0.172115" y="-0.40501" z="0.285462"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_19.mesh" material="rock">
+		<connection target="meteor_14.mesh" material="rock">
+			<rel_force value="0.492951"/>
+			<rel_torque value="0.346103"/>
+			<joint_center x="0.0772359" y="-0.514026" z="-0.514683"/>
+		</connection>
+		<connection target="meteor_17.mesh" material="rock">
+			<rel_force value="0.21064"/>
+			<rel_torque value="0.0966747"/>
+			<joint_center x="-0.466072" y="-0.58376" z="-0.114697"/>
+		</connection>
+		<connection target="meteor_18.mesh" material="rock">
+			<rel_force value="0.419505"/>
+			<rel_torque value="0.27171"/>
+			<joint_center x="-0.0802181" y="-0.540676" z="-0.151616"/>
+		</connection>
+	</mesh>
+	<mesh name="meteor_20.mesh" material="rock">
+		<connection target="meteor_3.mesh" material="rock">
+			<rel_force value="0"/>
+			<rel_torque value="0"/>
+			<joint_center x="-0.0125639" y="0.15485" z="-0.119898"/>
+		</connection>
+		<connection target="meteor_5.mesh" material="rock">
+			<rel_force value="0.367328"/>
+			<rel_torque value="0.222629"/>
+			<joint_center x="-0.190728" y="0.310015" z="-0.572212"/>
+		</connection>
+		<connection target="meteor_9.mesh" material="rock">
+			<rel_force value="0.853918"/>
+			<rel_torque value="0.789085"/>
+			<joint_center x="-0.489115" y="0.0367901" z="-0.440447"/>
+		</connection>
+		<connection target="meteor_13.mesh" material="rock">
+			<rel_force value="0.0301957"/>
+			<rel_torque value="0.00524709"/>
+			<joint_center x="0.0461546" y="-0.00835241" z="-0.0444139"/>
+		</connection>
+		<connection target="meteor_14.mesh" material="rock">
+			<rel_force value="0.399122"/>
+			<rel_torque value="0.25215"/>
+			<joint_center x="0.0294044" y="-0.209827" z="-0.525132"/>
+		</connection>
+		<connection target="meteor_15.mesh" material="rock">
+			<rel_force value="0.671592"/>
+			<rel_torque value="0.550374"/>
+			<joint_center x="-0.0291721" y="0.120737" z="-0.586187"/>
+		</connection>
+		<connection target="meteor_16.mesh" material="rock">
+			<rel_force value="0.024127"/>
+			<rel_torque value="0.00374762"/>
+			<joint_center x="0.074087" y="0.129042" z="-0.173612"/>
+		</connection>
+		<connection target="meteor_17.mesh" material="rock">
+			<rel_force value="0.185522"/>
+			<rel_torque value="0.0799085"/>
+			<joint_center x="-0.624633" y="-0.272276" z="-0.132414"/>
+		</connection>
+		<connection target="meteor_18.mesh" material="rock">
+			<rel_force value="0.490332"/>
+			<rel_torque value="0.343348"/>
+			<joint_center x="-0.212908" y="-0.10983" z="-0.0864705"/>
+		</connection>
+		<connection target="meteor_19.mesh" material="rock">
+			<rel_force value="1.24604"/>
+			<rel_torque value="1.39091"/>
+			<joint_center x="-0.319689" y="-0.300941" z="-0.404501"/>
+		</connection>
+	</mesh>
+</mesh_fragments>

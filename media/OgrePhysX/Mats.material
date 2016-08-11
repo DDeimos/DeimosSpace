@@ -1,0 +1,24 @@
+
+material rock
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.4 0.4 0.4
+			diffuse 1 1 1
+		}
+	}
+}
+
+material ice
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.4 0.4 0.4
+			diffuse 1 1 1
+		}
+	}
+}
