@@ -22,4 +22,5 @@ ogre.cfg
 *.tlog
 *.idb
 *.exp
+*.opensdf
 *.lastbuildstate
