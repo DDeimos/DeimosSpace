@@ -56,8 +56,12 @@
       <AdditionalDependencies>..\..\Boost\lib\libboost_thread-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_date_time-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_system-vc110-mt-gd-1_61.lib;..\..\Boost\lib\libboost_chrono-vc110-mt-gd-1_61.lib;..\lib\debug\OIS_d.lib;..\lib\debug\OgreMain_d.lib;..\lib\debug\OgreOverlay_d.lib;..\lib\debug\OgreTerrain_d.lib;..\lib\debug\MyGUI.OgrePlatform_d.lib;..\lib\debug\MyGUIEngine_d.lib;..\bin\debug\SkyX_d.lib;..\bin\debug\HydraX_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST "$(TargetDir)debug/terrain_00000000.dat" copy /Y "$(TargetDir)debug/terrain_00000000.dat" "$(TargetDir)../media/terrain_00000000.dat"</Command>
+      <Command>xcopy "$(TargetDir)terrain_00000000.dat" "$(TargetDir)../../media/terrain_00000000.dat" /Y /D</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
