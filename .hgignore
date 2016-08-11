@@ -1,6 +1,8 @@
+syntax: glob
+
 Thumbs.db
-ogre.cfg
 *.obj
+*.exe
 *.pdb
 *.user
 *.aps
@@ -16,10 +18,6 @@ ogre.cfg
 *.cache
 *.ilk
 *.log
+*.dll
+*.lib
 *.sbr
-*.map
-*.sdf
-*.tlog
-*.idb
-*.exp
-*.lastbuildstate
