@@ -4,17 +4,25 @@
 MyGUISample::MyGUISample()
 {
 	mNodeCount = 0;
+	mGui = 0;
+	mPlatform = 0;
 	mLMouseDown = false;
 	mRMouseDown = false;
 }
 
 MyGUISample::~MyGUISample()
 {
-	mGui->shutdown();
-	delete mGui;
+	if (mGui != 0)
+	{
+		mGui->shutdown();
+		delete mGui;
+	}
 
-	mPlatform->shutdown();
-	delete mPlatform;
+	if (mPlatform != 0)
+	{
+		mPlatform->shutdown();
+		delete mPlatform;
+	}
 }
 
 void MyGUISample::createScene()
@@ -35,11 +43,17 @@ void MyGUISample::createScene()
 void MyGUISample::InitMeshesList()
 {
 	mMeshesList = mGui->createWidget<MyGUI::ListBox>("ListBox", 5, 5, 120, 590, MyGUI::Align::Default, "Main");
-	auto files = Directory::GetFiles("../../media/models/", "*.mesh");
 
+	auto files = Directory::GetFiles("../../media/models/", ".mesh", true);
 	for (std::string file : files)
 	{
 		mMeshesList->addItem(file);
+	}
+
+	auto dirs = Directory::GetDirectories("../../media/models/");
+	for (std::string dir : dirs)
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(dir, "FileSystem");
 	}
 }
 

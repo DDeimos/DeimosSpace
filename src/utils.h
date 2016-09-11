@@ -1,31 +1,55 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <vector>
+#include <iostream>
+#include <filesystem>
+
+using namespace std;
+using namespace std::tr2::sys;
 
 class Directory
 {
 public:
 
-	static std::vector<std::string> GetFiles(std::string directory, std::string searchPattern)
+	static vector<string> GetFiles(string directory, string ext = "", bool onlyName = false)
 	{
-		WIN32_FIND_DATAA data;
-		std::vector<std::string> files;
+		vector<string> files;
+		recursive_directory_iterator start(directory), end;
 
-		std::string path = directory + searchPattern;
-		HANDLE hFind = FindFirstFileA(path.c_str(), &data);
-
-		if (hFind != INVALID_HANDLE_VALUE)
+		for (; start != end; ++start)
 		{
-			do 
-			{
-				files.push_back(std::string(data.cFileName));
-			} while (FindNextFileA(hFind, &data));
+			path p = start->path();
 
-			FindClose(hFind);
+			if (!is_directory(p))
+			{
+				if (ext == "" || ext == extension(p))
+				{
+					string file = onlyName ? p.filename() : p.string();
+					files.push_back(file);
+				}
+			}
 		}
 
 		return files;
+	}
+
+	static vector<string> GetDirectories(string directory, bool onlyName = false)
+	{
+		vector<string> dirs;
+		recursive_directory_iterator start(directory), end;
+
+		for (; start != end; ++start)
+		{
+			path p = start->path();
+
+			if (is_directory(p))
+			{
+				string dir = onlyName ? p.filename() : p.string();
+				dirs.push_back(dir);
+			}
+		}
+
+		return dirs;
 	}
 };
 
