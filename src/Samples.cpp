@@ -40,6 +40,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new OgreSkyWaterSample();
 	else if(startSample == "OgrePhysXSample") 
 		return new OgrePhysXSample();
+	else if(startSample == "PhysXCubesSample") 
+		return new PhysXCubesSample();
 
 	return 0;
 }

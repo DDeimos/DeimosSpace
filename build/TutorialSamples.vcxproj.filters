@@ -66,6 +66,9 @@
     <ClInclude Include="..\src\OgrePhysXSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\PhysXCubesSample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\BaseApplication.cpp">
@@ -117,6 +120,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\OgrePhysXSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PhysXCubesSample.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

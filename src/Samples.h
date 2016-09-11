@@ -17,6 +17,7 @@
 #include "SkyXHydraXSample.h"
 #include "OgreSkyWaterSample.h"
 #include "OgrePhysXSample.h"
+#include "PhysXCubesSample.h"
 
 using namespace std;
 

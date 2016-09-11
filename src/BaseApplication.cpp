@@ -153,13 +153,13 @@ void BaseApplication::createScene(void)
 	Ogre::Vector3 lightdir(0.55, -0.3, 0.75);
 	lightdir.normalise();
 
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.2, 0.2, 0.2));
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(0.3, 0.3, 0.3));
 
 	mLight = mSceneMgr->createLight("TestLight");
 	mLight->setType(Ogre::Light::LT_DIRECTIONAL);
 	mLight->setDirection(lightdir);
 	mLight->setDiffuseColour(Ogre::ColourValue::White);
-	mLight->setSpecularColour(Ogre::ColourValue(0.4, 0.4, 0.4));
+	mLight->setSpecularColour(Ogre::ColourValue(0.5, 0.5, 0.5));
 }
 //-------------------------------------------------------------------------------------
 void BaseApplication::destroyScene(void)

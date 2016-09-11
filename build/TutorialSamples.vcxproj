@@ -104,6 +104,7 @@ IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" xcopy "$(PHYSX_DIR)\Bin\v
     <ClInclude Include="..\src\MyGUISample.h" />
     <ClInclude Include="..\src\OgrePhysXSample.h" />
     <ClInclude Include="..\src\OgreSkyWaterSample.h" />
+    <ClInclude Include="..\src\PhysXCubesSample.h" />
     <ClInclude Include="..\src\Samples.h" />
     <ClInclude Include="..\src\SkyXHydraXSample.h" />
     <ClInclude Include="..\src\SkyXTerrainSample.h" />
@@ -124,6 +125,7 @@ IF EXIST "$(PHYSX_DIR)\Bin\vc11win32\nvToolsExt32_1.*" xcopy "$(PHYSX_DIR)\Bin\v
     <ClCompile Include="..\src\MyGUISample.cpp" />
     <ClCompile Include="..\src\OgrePhysXSample.cpp" />
     <ClCompile Include="..\src\OgreSkyWaterSample.cpp" />
+    <ClCompile Include="..\src\PhysXCubesSample.cpp" />
     <ClCompile Include="..\src\Samples.cpp" />
     <ClCompile Include="..\src\SkyXHydraXSample.cpp" />
     <ClCompile Include="..\src\SkyXTerrainSample.cpp" />
