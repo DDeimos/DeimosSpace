@@ -78,6 +78,9 @@ namespace OgrePhysX
 
 		PxScene* getPxScene();
 
+		void setGravity(const PxVec3& vec) { mPxScene->setGravity(vec); }
+		PxVec3 getGravity() const { return mPxScene->getGravity(); }
+
 		/**
 		Creates a new rigid dynamic actor with a specified collision shape and a default material and adds it to the scene.
 		@return An Actor object wrapping the created PxActor.
