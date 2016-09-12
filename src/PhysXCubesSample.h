@@ -14,13 +14,21 @@ public:
 protected:
 	virtual void createScene();
 	virtual void createCamera();
+	virtual void createFrameListener();
 	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
+	virtual bool mouseMoved(const OIS::MouseEvent &arg);
+	virtual bool mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
+	virtual bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
 	virtual bool keyPressed(const OIS::KeyEvent& ke);
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
 
-	void CreateGround();
+	void CreatePlane();
+	void CreateCube();
 
 private:
+	int m_cubesCount;
+	bool m_rightMouseDown;
+	Ogre::RaySceneQuery* m_rayScnQuery;
 	OgrePhysX::Scene *m_physXScene;
 };
 
