@@ -140,7 +140,7 @@ void PhysXCubesSample::CreateCube()
 		Ogre::Vector3 scale(0.1f, 0.1f, 0.1f);
 		Ogre::Vector3 pos = ray.getPoint(point.second);
 		Ogre::Vector3 size = entity->getBoundingBox().getHalfSize();
-		pos.y += size.y * scale.y;
+		pos.y += size.y * scale.y * 10;
 
 		Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("cube_" + count);
 		node->setScale(scale);
@@ -148,6 +148,9 @@ void PhysXCubesSample::CreateCube()
 
 		auto actor = m_physXScene->createRigidDynamic(entity, 100.f, scale);
 		m_physXScene->createRenderedActorBinding(actor, new OgrePhysX::NodeRenderable(node));
-		actor.setGlobalPosition(pos);
+		actor.setGlobalPosition(mCamera->getPosition());
+
+		physx::PxVec3 vec = OgrePhysX::Convert::toPx(mCamera->getDirection());
+		actor.getPxActor()->addForce(vec * 100, physx::PxForceMode::eVELOCITY_CHANGE);
 	}
 }
