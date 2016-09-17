@@ -29,7 +29,7 @@ void PhysXCubesSample::createScene()
 	OgrePhysX::World::getSingleton().setupOgreFramelistener();
 
 	m_physXScene = OgrePhysX::World::getSingleton().addScene("Main", mSceneMgr);
-	m_physXScene->setGravity(physx::PxVec3(0, -9.81f * 2.f, 0));
+	m_physXScene->setGravity(physx::PxVec3(0, -9.81f * 3.f, 0));
 
 	//PhyX plane geometry always has the normal (1, 0, 0), so we have to rotate the plane shape in order to create a plane with a normal (0, 1, 0)
 	OgrePhysX::Actor<physx::PxRigidStatic> ground = m_physXScene->createRigidStatic(OgrePhysX::Geometry::planeGeometry(), physx::PxTransform(physx::PxQuat(Ogre::Math::PI/2, physx::PxVec3(0,0,1))));
@@ -71,6 +71,11 @@ bool PhysXCubesSample::keyReleased(const OIS::KeyEvent& ke)
 		mSceneMgr->setSkyBox(true, "Examples/MorningSkyBox");
 	else if(ke.key == OIS::KC_5)
 		mSceneMgr->setSkyBox(true, "Examples/EveningSkyBox");
+	else if (ke.key == OIS::KC_SPACE)
+	{
+		physx::PxVec3 force = OgrePhysX::Convert::toPx(mCamera->getDirection());
+		CreateCubeWithForce(force * 100);
+	}
 
 	return true;
 }
@@ -126,8 +131,9 @@ void PhysXCubesSample::CreatePlane()
 	groundEntity->setCastShadows(false);
 }
 
-void PhysXCubesSample::CreateCube()
+OgrePhysX::Actor<physx::PxRigidDynamic> PhysXCubesSample::CreateCube()
 {
+	OgrePhysX::Actor<physx::PxRigidDynamic> actor = 0;
 	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
 	Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
 	auto point = ray.intersects(plane);
@@ -138,19 +144,32 @@ void PhysXCubesSample::CreateCube()
 		Ogre::Entity* entity = mSceneMgr->createEntity("cube_" + count, "cube.mesh");
 
 		Ogre::Vector3 scale(0.1f, 0.1f, 0.1f);
-		Ogre::Vector3 pos = ray.getPoint(point.second);
-		Ogre::Vector3 size = entity->getBoundingBox().getHalfSize();
-		pos.y += size.y * scale.y * 10;
-
 		Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("cube_" + count);
 		node->setScale(scale);
 		node->attachObject(entity);
 
-		auto actor = m_physXScene->createRigidDynamic(entity, 100.f, scale);
+		actor = m_physXScene->createRigidDynamic(entity, 100.f, scale);
 		m_physXScene->createRenderedActorBinding(actor, new OgrePhysX::NodeRenderable(node));
-		actor.setGlobalPosition(mCamera->getPosition());
 
-		physx::PxVec3 vec = OgrePhysX::Convert::toPx(mCamera->getDirection());
-		actor.getPxActor()->addForce(vec * 100, physx::PxForceMode::eVELOCITY_CHANGE);
+		Ogre::Vector3 pos = ray.getPoint(point.second);
+		Ogre::Vector3 size = entity->getBoundingBox().getHalfSize();
+		pos.y += size.y * scale.y;
+		actor.setGlobalPosition(pos);
 	}
+
+	return actor;
+}
+
+OgrePhysX::Actor<physx::PxRigidDynamic> PhysXCubesSample::CreateCubeWithForce(physx::PxVec3 force)
+{
+	auto actor = CreateCube();
+	auto pxActor = actor.getPxActor();
+
+	if (pxActor != 0)
+	{
+		actor.setGlobalPosition(mCamera->getPosition());
+		pxActor->addForce(force, physx::PxForceMode::eVELOCITY_CHANGE);
+	}
+
+	return actor;
 }

@@ -23,7 +23,8 @@ protected:
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
 
 	void CreatePlane();
-	void CreateCube();
+	OgrePhysX::Actor<physx::PxRigidDynamic> CreateCube();
+	OgrePhysX::Actor<physx::PxRigidDynamic> CreateCubeWithForce(physx::PxVec3 force);
 
 private:
 	int m_cubesCount;
