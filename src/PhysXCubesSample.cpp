@@ -1,14 +1,108 @@
 #include "PhysXCubesSample.h"
 
+CCube::CCube(int count, Ogre::SceneManager* sceneMgr, OgrePhysX::Scene* physXScene)
+{
+	mName = "cube_" + std::to_string(count);
+	mSceneMgr = sceneMgr;
+	mPhysXScene = physXScene;
+	mScale = Ogre::Vector3(0.1f, 0.1f, 0.1f);
+	mEntity = 0;
+	mNode = 0;
+}
+
+CCube::~CCube()
+{
+	mNode->detachObject(mEntity);
+	mSceneMgr->destroyEntity(mEntity);
+	mSceneMgr->destroySceneNode(mNode);
+
+	if (mPhysXScene != 0)
+	{
+		mPhysXScene->destroyRenderableBinding(mBinding);
+		mPhysXScene->removeActor(mActor);
+	}
+}
+
+void CCube::Initialize()
+{
+	InitEntity();
+	InitNode();
+	InitPhys();
+}
+
+void CCube::InitEntity()
+{
+	mEntity = mSceneMgr->createEntity(mName, "cube.mesh");
+}
+
+void CCube::InitNode()
+{
+	mNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(mName);
+	mNode->setScale(mScale);
+	mNode->attachObject(mEntity);
+}
+
+void CCube::InitPhys()
+{
+	if (mPhysXScene != 0)
+	{
+		mActor = mPhysXScene->createRigidDynamic(mEntity, 0.1f, mScale);
+		mBinding = mPhysXScene->createRenderedActorBinding(mActor, new OgrePhysX::NodeRenderable(mNode));
+	}
+}
+
+void CCube::AddForce(Ogre::Camera* camera, physx::PxVec3 force)
+{
+	auto pxActor = mActor.getPxActor();
+
+	if (pxActor != 0)
+	{
+		mActor.setGlobalPosition(camera->getPosition());
+		pxActor->addForce(force, physx::PxForceMode::eVELOCITY_CHANGE);
+	}
+}
+
+void CCube::SetPos(Ogre::Vector3 pos)
+{
+	if (mActor.getPxActor() != 0)
+		mActor.setGlobalPosition(pos);
+	else
+		mNode->setPosition(pos);
+}
+
+void CCube::SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray)
+{
+	rayScnQuery->clearResults();
+	rayScnQuery->setRay(ray);
+	rayScnQuery->setSortByDistance(true);
+
+	for (auto entry : rayScnQuery->execute())
+	{
+		Ogre::String name = entry.movable->getName();
+
+		if (mEntity->getName() != name && name != "cube_0")
+		{
+			Ogre::Vector3 pos = ray.getPoint(entry.distance);
+			Ogre::Vector3 size = mEntity->getBoundingBox().getHalfSize();
+			pos.y += size.y * mScale.y;
+			SetPos(pos);
+			break;
+		}
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////
+
 PhysXCubesSample::PhysXCubesSample()
 {
-	m_cubesCount = 0;
-	m_rightMouseDown = false;
+	mRightMouseDown = false;
+	mRayScnQuery = 0;
+	mPhysXScene = 0;
 }
 
 PhysXCubesSample::~PhysXCubesSample()
 {
-	mSceneMgr->destroyQuery(m_rayScnQuery);
+	mSceneMgr->destroyQuery(mRayScnQuery);
 }
 
 void PhysXCubesSample::createCamera()
@@ -28,18 +122,20 @@ void PhysXCubesSample::createScene()
 	OgrePhysX::World::getSingleton().init();
 	OgrePhysX::World::getSingleton().setupOgreFramelistener();
 
-	m_physXScene = OgrePhysX::World::getSingleton().addScene("Main", mSceneMgr);
-	m_physXScene->setGravity(physx::PxVec3(0, -9.81f * 3.f, 0));
+	mPhysXScene = OgrePhysX::World::getSingleton().addScene("Main", mSceneMgr);
+	mPhysXScene->setGravity(physx::PxVec3(0, -9.81f * 5.f, 0));
 
 	//PhyX plane geometry always has the normal (1, 0, 0), so we have to rotate the plane shape in order to create a plane with a normal (0, 1, 0)
-	OgrePhysX::Actor<physx::PxRigidStatic> ground = m_physXScene->createRigidStatic(OgrePhysX::Geometry::planeGeometry(), physx::PxTransform(physx::PxQuat(Ogre::Math::PI/2, physx::PxVec3(0,0,1))));
+	OgrePhysX::Actor<physx::PxRigidStatic> ground = mPhysXScene->createRigidStatic(OgrePhysX::Geometry::planeGeometry(), physx::PxTransform(physx::PxQuat(Ogre::Math::PI/2, physx::PxVec3(0,0,1))));
+
+	CreateEmptyCube();
 }
 
 void PhysXCubesSample::createFrameListener()
 {
 	BaseApplication::createFrameListener();
 
-	m_rayScnQuery = mSceneMgr->createRayQuery(Ogre::Ray());
+	mRayScnQuery = mSceneMgr->createRayQuery(Ogre::Ray());
 	mTrayMgr->showCursor();
 }
 
@@ -53,6 +149,13 @@ bool PhysXCubesSample::frameRenderingQueued(const Ogre::FrameEvent& evt)
 bool PhysXCubesSample::keyPressed(const OIS::KeyEvent& ke)
 {
 	mCameraMan->injectKeyDown(ke);
+
+	if (ke.key == OIS::KC_LMENU)
+	{
+		Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+		mTargetCube->SetPosUnderCursor(mRayScnQuery, ray);
+		mTargetCube->GetEntity()->setVisible(true);
+	}
 
 	return true;
 }
@@ -72,17 +175,18 @@ bool PhysXCubesSample::keyReleased(const OIS::KeyEvent& ke)
 	else if(ke.key == OIS::KC_5)
 		mSceneMgr->setSkyBox(true, "Examples/EveningSkyBox");
 	else if (ke.key == OIS::KC_SPACE)
-	{
-		physx::PxVec3 force = OgrePhysX::Convert::toPx(mCamera->getDirection());
-		CreateCubeWithForce(force * 100);
-	}
+		CreateForceCube();
+	else if (ke.key == OIS::KC_LMENU)
+		mTargetCube->GetEntity()->setVisible(false);
+	else if (ke.key == OIS::KC_BACK)
+		ClearAllCubes();
 
 	return true;
 }
 
 bool PhysXCubesSample::mouseMoved(const OIS::MouseEvent &arg)
 {
-	if (m_rightMouseDown)
+	if (mRightMouseDown)
 	{
 		mCamera->yaw(Ogre::Degree(-arg.state.X.rel * 0.2));
 		mCamera->pitch(Ogre::Degree(-arg.state.Y.rel * 0.2));
@@ -90,6 +194,12 @@ bool PhysXCubesSample::mouseMoved(const OIS::MouseEvent &arg)
 	else
 	{
 		mTrayMgr->injectMouseMove(arg);
+
+		if(mTargetCube->GetEntity()->getVisible())
+		{
+			Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+			mTargetCube->SetPosUnderCursor(mRayScnQuery, ray);
+		}
 	}
 
 	return true;
@@ -99,7 +209,7 @@ bool PhysXCubesSample::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButton
 {
 	if (id == OIS::MB_Right)
 	{
-		m_rightMouseDown = true;
+		mRightMouseDown = true;
 	}
 
 	return true;
@@ -113,7 +223,7 @@ bool PhysXCubesSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButto
 	}
 	else if (id == OIS::MB_Right)
 	{
-		m_rightMouseDown = false;
+		mRightMouseDown = false;
 	}
 
 	return true;
@@ -131,45 +241,42 @@ void PhysXCubesSample::CreatePlane()
 	groundEntity->setCastShadows(false);
 }
 
-OgrePhysX::Actor<physx::PxRigidDynamic> PhysXCubesSample::CreateCube()
+void PhysXCubesSample::CreateCube()
 {
-	OgrePhysX::Actor<physx::PxRigidDynamic> actor = 0;
-	Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+	int count = mCubes.size() + 1;
+	CCube* cube = new CCube(count, mSceneMgr, mPhysXScene);
+	cube->Initialize();
+
 	Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
-	auto point = ray.intersects(plane);
-
-	if (point.first)
-	{
-		std::string count = std::to_string(++m_cubesCount);
-		Ogre::Entity* entity = mSceneMgr->createEntity("cube_" + count, "cube.mesh");
-
-		Ogre::Vector3 scale(0.1f, 0.1f, 0.1f);
-		Ogre::SceneNode* node = mSceneMgr->getRootSceneNode()->createChildSceneNode("cube_" + count);
-		node->setScale(scale);
-		node->attachObject(entity);
-
-		actor = m_physXScene->createRigidDynamic(entity, 100.f, scale);
-		m_physXScene->createRenderedActorBinding(actor, new OgrePhysX::NodeRenderable(node));
-
-		Ogre::Vector3 pos = ray.getPoint(point.second);
-		Ogre::Vector3 size = entity->getBoundingBox().getHalfSize();
-		pos.y += size.y * scale.y;
-		actor.setGlobalPosition(pos);
-	}
-
-	return actor;
+	cube->SetPosUnderCursor(mRayScnQuery, ray);
+	mCubes.push_back(cube);
 }
 
-OgrePhysX::Actor<physx::PxRigidDynamic> PhysXCubesSample::CreateCubeWithForce(physx::PxVec3 force)
+void PhysXCubesSample::CreateForceCube()
 {
-	auto actor = CreateCube();
-	auto pxActor = actor.getPxActor();
+	int count = mCubes.size() + 1;
+	physx::PxVec3 force = OgrePhysX::Convert::toPx(mCamera->getDirection());
+	CCube* cube = new CCube(count, mSceneMgr, mPhysXScene);
+	cube->Initialize();
 
-	if (pxActor != 0)
+	cube->AddForce(mCamera, force * 200);
+	mCubes.push_back(cube);
+}
+
+void PhysXCubesSample::CreateEmptyCube()
+{
+	CCube* cube = new CCube(mCubes.size(), mSceneMgr);
+	cube->Initialize();
+	mTargetCube = cube;
+	mTargetCube->GetEntity()->setVisible(false);
+}
+
+void PhysXCubesSample::ClearAllCubes()
+{
+	for (auto cube : mCubes)
 	{
-		actor.setGlobalPosition(mCamera->getPosition());
-		pxActor->addForce(force, physx::PxForceMode::eVELOCITY_CHANGE);
+		delete cube;
 	}
 
-	return actor;
+	mCubes.clear();
 }

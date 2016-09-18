@@ -5,6 +5,38 @@
 #include "OgrePhysX.h"
 #include "PxPhysicsAPI.h"
 
+class CCube
+{
+public:
+	CCube(int count, Ogre::SceneManager* sceneMgr, OgrePhysX::Scene* physXScene = 0);
+	~CCube();
+
+	void Initialize();
+
+	void AddForce(Ogre::Camera* camera, physx::PxVec3 force);
+	void SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray);
+	void SetPos(Ogre::Vector3 pos);
+
+	Ogre::Entity* GetEntity() { return mEntity; }
+	Ogre::SceneNode* GetNode() { return mNode; }
+	OgrePhysX::Actor<physx::PxRigidDynamic> GetActor() { return mActor; }
+
+private:
+	void InitEntity();
+	void InitNode();
+	void InitPhys();
+
+	Ogre::String mName;
+	Ogre::Vector3 mScale;
+	Ogre::Entity* mEntity;
+	Ogre::SceneNode* mNode;
+	OgrePhysX::Actor<physx::PxRigidDynamic> mActor;
+	OgrePhysX::RenderedActorBinding* mBinding;
+
+	Ogre::SceneManager* mSceneMgr;
+	OgrePhysX::Scene* mPhysXScene;
+};
+
 class PhysXCubesSample : public BaseApplication
 {
 public:
@@ -23,14 +55,17 @@ protected:
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
 
 	void CreatePlane();
-	OgrePhysX::Actor<physx::PxRigidDynamic> CreateCube();
-	OgrePhysX::Actor<physx::PxRigidDynamic> CreateCubeWithForce(physx::PxVec3 force);
+	void CreateCube();
+	void CreateForceCube();
+	void CreateEmptyCube();
+	void ClearAllCubes();
 
 private:
-	int m_cubesCount;
-	bool m_rightMouseDown;
-	Ogre::RaySceneQuery* m_rayScnQuery;
-	OgrePhysX::Scene *m_physXScene;
+	bool mRightMouseDown;
+	Ogre::RaySceneQuery* mRayScnQuery;
+	OgrePhysX::Scene* mPhysXScene;
+	std::vector<CCube*> mCubes;
+	CCube* mTargetCube;
 };
 
 #endif
