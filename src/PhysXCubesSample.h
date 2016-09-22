@@ -17,6 +17,7 @@ public:
 	void SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray);
 	void SetPos(Ogre::Vector3 pos);
 
+	Ogre::String GetName() { return mName; }
 	Ogre::Entity* GetEntity() { return mEntity; }
 	Ogre::SceneNode* GetNode() { return mNode; }
 	OgrePhysX::Actor<physx::PxRigidDynamic> GetActor() { return mActor; }
@@ -58,13 +59,18 @@ protected:
 	void CreateCube();
 	void CreateForceCube();
 	void CreateEmptyCube();
+	void TrySelectCube();
+	void SelectCube(CCube* cube);
+	void UnselectAllCubes();
 	void ClearAllCubes();
+	CCube* FindCubeUnderCursor();
 
 private:
 	bool mRightMouseDown;
+	bool mIsAltDown;
 	Ogre::RaySceneQuery* mRayScnQuery;
 	OgrePhysX::Scene* mPhysXScene;
-	std::vector<CCube*> mCubes;
+	std::map<Ogre::String, CCube*> mCubes;
 	CCube* mTargetCube;
 };
 

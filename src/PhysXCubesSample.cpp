@@ -33,6 +33,7 @@ void CCube::Initialize()
 void CCube::InitEntity()
 {
 	mEntity = mSceneMgr->createEntity(mName, "cube.mesh");
+	mEntity->setMaterialName("Examples/BeachStones");
 }
 
 void CCube::InitNode()
@@ -72,7 +73,6 @@ void CCube::SetPos(Ogre::Vector3 pos)
 
 void CCube::SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray)
 {
-	rayScnQuery->clearResults();
 	rayScnQuery->setRay(ray);
 	rayScnQuery->setSortByDistance(true);
 
@@ -96,6 +96,7 @@ void CCube::SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray)
 PhysXCubesSample::PhysXCubesSample()
 {
 	mRightMouseDown = false;
+	mIsAltDown = false;
 	mRayScnQuery = 0;
 	mPhysXScene = 0;
 }
@@ -152,6 +153,7 @@ bool PhysXCubesSample::keyPressed(const OIS::KeyEvent& ke)
 
 	if (ke.key == OIS::KC_LMENU)
 	{
+		mIsAltDown = true;
 		Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
 		mTargetCube->SetPosUnderCursor(mRayScnQuery, ray);
 		mTargetCube->GetEntity()->setVisible(true);
@@ -176,10 +178,13 @@ bool PhysXCubesSample::keyReleased(const OIS::KeyEvent& ke)
 		mSceneMgr->setSkyBox(true, "Examples/EveningSkyBox");
 	else if (ke.key == OIS::KC_SPACE)
 		CreateForceCube();
-	else if (ke.key == OIS::KC_LMENU)
-		mTargetCube->GetEntity()->setVisible(false);
 	else if (ke.key == OIS::KC_BACK)
 		ClearAllCubes();
+	else if (ke.key == OIS::KC_LMENU)
+	{
+		mIsAltDown = false;
+		mTargetCube->GetEntity()->setVisible(false);
+	}
 
 	return true;
 }
@@ -219,7 +224,10 @@ bool PhysXCubesSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButto
 {
 	if (id == OIS::MB_Left)
 	{
-		CreateCube();
+		if (mIsAltDown)
+			CreateCube();
+		else
+			TrySelectCube();
 	}
 	else if (id == OIS::MB_Right)
 	{
@@ -249,7 +257,7 @@ void PhysXCubesSample::CreateCube()
 
 	Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
 	cube->SetPosUnderCursor(mRayScnQuery, ray);
-	mCubes.push_back(cube);
+	mCubes[cube->GetName()] = cube;
 }
 
 void PhysXCubesSample::CreateForceCube()
@@ -260,7 +268,7 @@ void PhysXCubesSample::CreateForceCube()
 	cube->Initialize();
 
 	cube->AddForce(mCamera, force * 200);
-	mCubes.push_back(cube);
+	mCubes[cube->GetName()] = cube;
 }
 
 void PhysXCubesSample::CreateEmptyCube()
@@ -271,12 +279,50 @@ void PhysXCubesSample::CreateEmptyCube()
 	mTargetCube->GetEntity()->setVisible(false);
 }
 
-void PhysXCubesSample::ClearAllCubes()
+void PhysXCubesSample::TrySelectCube()
+{
+	if (CCube* cube = FindCubeUnderCursor())
+		SelectCube(cube);
+	else
+		UnselectAllCubes();
+}
+
+void PhysXCubesSample::SelectCube(CCube* cube)
+{
+	cube->GetNode()->showBoundingBox(true);
+}
+
+void PhysXCubesSample::UnselectAllCubes()
 {
 	for (auto cube : mCubes)
 	{
-		delete cube;
+		auto node = cube.second->GetNode();
+		node->showBoundingBox(false);
 	}
+}
+
+void PhysXCubesSample::ClearAllCubes()
+{
+	for (auto cube : mCubes)
+		delete cube.second;
 
 	mCubes.clear();
+}
+
+CCube* PhysXCubesSample::FindCubeUnderCursor()
+{
+	Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+	mRayScnQuery->setRay(ray);
+	mRayScnQuery->setSortByDistance(true);
+
+	for (auto entry : mRayScnQuery->execute())
+	{
+		Ogre::String name = entry.movable->getName();
+		bool isCube = name.find("cube_") != -1;
+
+		if (isCube && name != "cube_0")
+			return mCubes[name];
+	}
+
+	return 0;
 }
