@@ -38,6 +38,7 @@ public:
 	virtual ~EntitySelectSample();
 
 protected:
+	virtual void createCamera(void);
 	virtual void createScene(void);
 	virtual void chooseSceneManager(void);
 	virtual void createFrameListener(void);

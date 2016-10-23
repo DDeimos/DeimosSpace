@@ -17,7 +17,7 @@ protected:
 	virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 
 private:
-	OgrePhysX::Scene *m_physXScene;
+	OgrePhysX::Scene *mPhysXScene;
 };
 
 #endif

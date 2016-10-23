@@ -94,6 +94,14 @@ EntitySelectSample::~EntitySelectSample()
 	m_creatures.clear();
 }
 
+void EntitySelectSample::createCamera()
+{
+	BaseApplication::createCamera();
+
+	mCamera->setPosition(Ogre::Vector3(500, 500, -500));
+	mCamera->lookAt(Ogre::Vector3(0, 0, 0));
+}
+
 void EntitySelectSample::createScene()
 {
 	TerrainSample::createScene();
@@ -228,14 +236,13 @@ bool EntitySelectSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseBut
 
 		if (creature)
 		{
-			//TODO getCursorPos
-			/*Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
-			Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
+			Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+			Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(ray);
 
 			if (result.terrain)
 			{
 				creature->SetTarget(result.position);
-			}*/
+			}
 		}
 	}
 
@@ -284,7 +291,8 @@ bool EntitySelectSample::SelectNodeUnderCursor()
 		}
 		else
 		{
-			MessageBoxA( NULL, name.c_str(), "Movable is not found!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+			// ???
+			//MessageBoxA( NULL, name.c_str(), "Movable is not found!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
 		}
 	}
 
@@ -297,14 +305,13 @@ void EntitySelectSample::MoveNodeUnderCursor()
 
 	if (creature)
 	{
-		//TODO getCursorPos
-		/*Ogre::Ray mouseRay = mTrayMgr->screenToScene(mCamera, mTrayMgr->getCursorPos());
-		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(mouseRay);
+		Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+		Ogre::TerrainGroup::RayResult result = mTerrainGroup->rayIntersects(ray);
 
 		if (result.terrain)
 		{
 			creature->GetNode()->setPosition(result.position);
-		}*/
+		}
 	}
 }
 

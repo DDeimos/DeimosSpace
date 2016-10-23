@@ -36,14 +36,12 @@ void OgrePhysXSample::createScene()
 
 	//Start OgrePhysX
 	OgrePhysX::World::getSingleton().init();
-
 	OgrePhysX::World::getSingleton().setupOgreFramelistener();
 
-	m_physXScene = OgrePhysX::World::getSingleton().addScene("Main", mSceneMgr);
+	mPhysXScene = OgrePhysX::World::getSingleton().addScene("Main", mSceneMgr);
 
 	//PhyX plane geometry always has the normal (1, 0, 0), so we have to rotate the plane shape in order to create a plane with a normal (0, 1, 0)
-	OgrePhysX::Actor<physx::PxRigidStatic> ground = m_physXScene->createRigidStatic(OgrePhysX::Geometry::planeGeometry(), physx::PxTransform(physx::PxQuat(Ogre::Math::PI/2, physx::PxVec3(0,0,1))));
-
+	OgrePhysX::Actor<physx::PxRigidStatic> ground = mPhysXScene->createRigidStatic(OgrePhysX::Geometry::planeGeometry(), physx::PxTransform(physx::PxQuat(Ogre::Math::PI/2, physx::PxVec3(0,0,1))));
 	//ground wraps the underlying PxRigidStatic and provides some helper methods
 	ground.setGlobalPosition(Ogre::Vector3(0, -2, 0));
 
@@ -66,7 +64,7 @@ void OgrePhysXSample::createScene()
 	{
 		Ogre::Real x = Ogre::Math::RangeRandom(-10, 10);
 		Ogre::Real y = Ogre::Math::RangeRandom(-10, 10);
-		OgrePhysX::Destructible *destructible = m_physXScene->createDestructible("meteor.xml", 100, 100, 80, Ogre::Vector3(1.0f, 1.0f, 1.0f));
+		OgrePhysX::Destructible *destructible = mPhysXScene->createDestructible("meteor.xml", 100, 100, 80, Ogre::Vector3(1.0f, 1.0f, 1.0f));
 		destructible->setGlobalPosition(Ogre::Vector3(x, i * 25, y));
 	}
 
