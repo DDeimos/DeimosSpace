@@ -2,12 +2,17 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TutorialSamples", "TutorialSamples.vcxproj", "{9B974831-5E66-404D-90A6-58C53025B130}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5F8456D-FD75-421A-AD2C-4F38379DD078} = {E5F8456D-FD75-421A-AD2C-4F38379DD078}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SkyX", "SkyX\SkyX.vcxproj", "{DF4EF10D-AD08-4824-A97B-7C7F7EA844C8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HydraX", "HydraX\HydraX.vcxproj", "{AC23E07F-E007-49B4-96B0-AEA8C42BE4AD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OgrePhysX", "OgrePhysX\OgrePhysX.vcxproj", "{D7852C0F-E593-4827-A546-FEC0B4915B0C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SquadSample", "SquadSample\SquadSample.vcxproj", "{E5F8456D-FD75-421A-AD2C-4F38379DD078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +36,10 @@ Global
 		{D7852C0F-E593-4827-A546-FEC0B4915B0C}.Debug|Win32.Build.0 = Debug|Win32
 		{D7852C0F-E593-4827-A546-FEC0B4915B0C}.Release|Win32.ActiveCfg = Release|Win32
 		{D7852C0F-E593-4827-A546-FEC0B4915B0C}.Release|Win32.Build.0 = Release|Win32
+		{E5F8456D-FD75-421A-AD2C-4F38379DD078}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E5F8456D-FD75-421A-AD2C-4F38379DD078}.Debug|Win32.Build.0 = Debug|Win32
+		{E5F8456D-FD75-421A-AD2C-4F38379DD078}.Release|Win32.ActiveCfg = Release|Win32
+		{E5F8456D-FD75-421A-AD2C-4F38379DD078}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

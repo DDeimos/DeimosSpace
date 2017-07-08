@@ -42,6 +42,8 @@ BaseApplication* CSamples::GetSampleObject(std::string startSample)
 		return new OgrePhysXSample();
 	else if(startSample == "PhysXCubesSample") 
 		return new PhysXCubesSample();
+	else if(startSample == "SquadSample") 
+		return new SquadSample();
 
 	return 0;
 }

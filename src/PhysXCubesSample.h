@@ -15,6 +15,7 @@ public:
 
 	void AddForce(Ogre::Camera* camera, physx::PxVec3 force);
 	void SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray);
+	void SetPosUnderCursor2(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray, CCube* cube);
 	void SetPosition(Ogre::Vector3 pos);
 
 	Ogre::String GetName() { return mName; }
@@ -24,6 +25,7 @@ public:
 	Ogre::Vector3 GetScale() { return mScale; }
 	Ogre::Vector3 GetSize() { return mEntity->getBoundingBox().getSize(); }
 	Ogre::Vector3 GetHalfSize() { return mEntity->getBoundingBox().getHalfSize(); }
+	Ogre::Vector3 GetPosition() { return mNode->getPosition(); }
 
 	OgrePhysX::RenderedActorBinding* GetBinding() { return mBinding; }
 	OgrePhysX::Actor<physx::PxRigidDynamic> GetActor() { return mActor; }
@@ -62,7 +64,7 @@ protected:
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
 
 	void CreatePlane();
-	void CreateJoint(CCube* cubeA, CCube* cubeB);
+	void CreateJoint(CCube* cubeA, CCube* cubeB, bool b);
 	void CreateCube();
 	void CreateForceCube();
 	void CreateEmptyCube();
@@ -81,6 +83,7 @@ private:
 	Ogre::RaySceneQuery* mRayScnQuery;
 	OgrePhysX::Scene* mPhysXScene;
 	std::map<Ogre::String, CCube*> mCubes;
+	std::vector<physx::PxFixedJoint*> mJoints;
 	CCube* mTargetCube;
 };
 

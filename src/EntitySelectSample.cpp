@@ -1,4 +1,5 @@
 #include "EntitySelectSample.h"
+//megakikiboy.tumblr.com
 
 CCreature::CCreature(std::string name, bool robotMode, Ogre::Entity* entity, Ogre::SceneNode* node, float speed)
 {

@@ -78,14 +78,56 @@ void CCube::SetPosUnderCursor(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray)
 
 	for (auto entry : rayScnQuery->execute())
 	{
-		Ogre::String name = entry.movable->getName();
-
-		if (mEntity->getName() != name && name != "cube_0")
+		if (entry.movable->getName() != "cube_0")
 		{
 			Ogre::Vector3 pos = ray.getPoint(entry.distance);
 			Ogre::Vector3 size = mEntity->getBoundingBox().getHalfSize();
 			pos.y += size.y * mScale.y;
 			SetPosition(pos);
+			break;
+		}
+	}
+}
+
+void CCube::SetPosUnderCursor2(Ogre::RaySceneQuery* rayScnQuery, Ogre::Ray ray, CCube* cube)
+{
+	rayScnQuery->setRay(ray);
+	rayScnQuery->setSortByDistance(true);
+
+	for (auto entry : rayScnQuery->execute())
+	{
+		if (entry.movable->getName() != "cube_0")
+		{
+			Ogre::Vector3 pointPos = ray.getPoint(entry.distance);
+			Ogre::Vector3 offset = mEntity->getBoundingBox().getSize() * mScale;
+			Ogre::Vector3 p1 = this->GetPosition();
+			Ogre::Vector3 p2 = cube->GetPosition();
+
+			auto dx = p1.x - p2.x;
+			auto dz = p1.z - p2.z;
+
+			if (abs(dx) < offset.x && abs(dz) < offset.z)
+			{
+				if (dx > 0)
+				{
+					pointPos.x += offset.x - dx;
+				}
+				else
+				{
+					pointPos.x += -offset.x - dx;
+				}
+
+				if (dz > 0)
+				{
+					pointPos.z += offset.z - dz;
+				}
+				else
+				{
+					pointPos.z += -offset.z - dz;
+				}
+			}
+
+			SetPosition(pointPos);
 			break;
 		}
 	}
@@ -117,6 +159,8 @@ void PhysXCubesSample::createCamera()
 void PhysXCubesSample::createScene()
 {
 	BaseApplication::createScene();
+
+	mSceneMgr->setAmbientLight(Ogre::ColourValue(1, 1, 1));
 
 	CreatePlane();
 
@@ -155,6 +199,7 @@ bool PhysXCubesSample::keyPressed(const OIS::KeyEvent& ke)
 	{
 		mIsAltDown = true;
 		Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
+
 		mTargetCube->SetPosUnderCursor(mRayScnQuery, ray);
 		mTargetCube->GetEntity()->setVisible(true);
 	}
@@ -225,7 +270,12 @@ bool PhysXCubesSample::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButto
 	if (id == OIS::MB_Left)
 	{
 		if (mIsAltDown)
-			CreateCube();
+		{
+			for (int i = 0; i < 10; i++)
+			{
+				CreateCube();
+			}
+		}
 		else
 			TrySelectCube();
 	}
@@ -249,19 +299,16 @@ void PhysXCubesSample::CreatePlane()
 	groundEntity->setCastShadows(false);
 }
 
-void PhysXCubesSample::CreateJoint(CCube* cubeA, CCube* cubeB)
+void PhysXCubesSample::CreateJoint(CCube* cubeA, CCube* cubeB, bool b)
 {
-	Ogre::Vector3 halfSizeA = cubeA->GetHalfSize() * cubeA->GetScale();
-	Ogre::Vector3 halfSizeB = cubeB->GetHalfSize() * cubeB->GetScale();
-	Ogre::Real dist = halfSizeA.x + halfSizeB.x; // causes x is base direction
-
-	Ogre::Vector3 dirA = cubeA->GetNode()->getOrientation() * Ogre::Vector3::UNIT_X;
-	Ogre::Vector3 posA = cubeA->GetNode()->getPosition();
-	Ogre::Vector3 step = dirA * dist;
-
-	Ogre::Vector3 posB = posA + step;
+	Ogre::Vector3 posA = cubeA->GetActor().getGlobalPosition();
+	Ogre::Vector3 posB = cubeB->GetActor().getGlobalPosition();
+	posB = posA;
+	if (b)
+		posB.y += 10;
+	else
+		posB.x -= 10;
 	cubeB->SetPosition(posB);
-
 
 	Ogre::Vector3 center = (posA + posB) / 2;
 	auto actorA = cubeA->GetBinding()->getActor();
@@ -273,31 +320,33 @@ void PhysXCubesSample::CreateJoint(CCube* cubeA, CCube* cubeB)
 	physx::PxTransform transformA = physx::PxTransform::createIdentity();
 	Ogre::Quaternion qA = cubeA->GetNode()->getOrientation();
 	transformA.q = OgrePhysX::Convert::toPx(qA);
-	transformA.p = OgrePhysX::Convert::toPx(posA - center);
+	transformA.p = OgrePhysX::Convert::toPx(center - posA);
 
 	physx::PxTransform transformB = physx::PxTransform::createIdentity();
-	Ogre::Quaternion qB = cubeA->GetNode()->getOrientation();
+	Ogre::Quaternion qB = cubeB->GetNode()->getOrientation();
 	transformB.q = OgrePhysX::Convert::toPx(qB);
-	transformB.p = OgrePhysX::Convert::toPx(posB - center);
+	transformB.p = OgrePhysX::Convert::toPx(center - posB);
 
 	physx::PxFixedJoint *joint = PxFixedJointCreate(*OgrePhysX::getPxPhysics(), actorA, transformA, actorB, transformB);
 	joint->setConstraintFlag(physx::PxConstraintFlag::eCOLLISION_ENABLED, false);
-	joint->setBreakForce(1000 * 1000, 1000 * 1000);
+	joint->setBreakForce(4000 * 1000, 4000 * 1000);
+	mJoints.push_back(joint);
 }
 
 void PhysXCubesSample::CreateCube()
 {
 	int count = mCubes.size() + 1;
+	Ogre::Vector3 pos = mTargetCube->GetPosition();
 	CCube* cube = new CCube(count, mSceneMgr, mPhysXScene);
 	cube->Initialize();
-
-	Ogre::Ray ray = mTrayMgr->getCursorRay(mCamera);
-	cube->SetPosUnderCursor(mRayScnQuery, ray);
+	cube->SetPosition(pos);
 	mCubes[cube->GetName()] = cube;
 
-	if (mCubes.size() == 2)
+	if (count > 1)
 	{
-		CreateJoint(mCubes["cube_1"], mCubes["cube_2"]);
+		std::string first = std::to_string(count - 1);
+		std::string second = std::to_string(count);
+		CreateJoint(mCubes["cube_" + first], mCubes["cube_" + second], count != 2);
 	}
 }
 
@@ -308,7 +357,7 @@ void PhysXCubesSample::CreateForceCube()
 	CCube* cube = new CCube(count, mSceneMgr, mPhysXScene);
 	cube->Initialize();
 
-	cube->AddForce(mCamera, force * 200);
+	cube->AddForce(mCamera, force * 300);
 	mCubes[cube->GetName()] = cube;
 }
 
@@ -347,7 +396,11 @@ void PhysXCubesSample::ClearAllCubes()
 	for (auto cube : mCubes)
 		delete cube.second;
 
+	for (auto joint : mJoints)
+		delete joint;
+
 	mCubes.clear();
+	mJoints.clear();
 }
 
 CCube* PhysXCubesSample::FindCubeUnderCursor()

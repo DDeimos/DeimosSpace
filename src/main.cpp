@@ -4,6 +4,8 @@
 
 INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
 {
+	srand (time(NULL));
+
 	CSamples sample;
 	sample.Load();
 

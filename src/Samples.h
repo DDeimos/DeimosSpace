@@ -18,6 +18,7 @@
 #include "OgreSkyWaterSample.h"
 #include "OgrePhysXSample.h"
 #include "PhysXCubesSample.h"
+#include "SquadSample/SquadSample.h"
 
 using namespace std;
 
