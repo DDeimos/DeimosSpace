@@ -24,3 +24,4 @@ ogre.cfg
 *.exp
 *.opensdf
 *.lastbuildstate
+*.unsuccessfulbuild
